@@ -5,6 +5,72 @@
  * Date: 2018-08-15
  * Time: 13:20
  */
+?>
+
+<?php
+$navMenu = array(
+	'icon' => array(
+		'type' => 'checkbox',
+		'name' => 'Nav Icon',
+	),
+	'home' => array(
+		'type' => 'input',
+		'name' => 'Home',
+		'placeholder' => '请输入图标',
+		'tips' => '设置显示的图标',
+	),
+	'category' => array(
+		'type' => 'input',
+		'name' => 'Category',
+	),
+	'about' => array(
+		'type' => 'input',
+		'name' => 'About',
+	),
+	'archives' => array(
+		'type' => 'input',
+		'name' => 'Archives',
+	),
+	'tag' => array(
+		'type' => 'input',
+		'name' => 'Tag',
+	),
+	'sitemap' => array(
+		'type' => 'input',
+		'name' => 'Sitemap',
+	)
+);
+$socialMenu = array(
+	'icon' => array(
+		'type' => 'checkbox',
+		'name' => 'Social Icon',
+	),
+	'weibo' => array(
+		'type' => 'input',
+		'name' => 'Weibo',
+	),
+	'zhihu' => array(
+		'type' => 'input',
+		'name' => 'Zhihu',
+	),
+	'github' => array(
+		'type' => 'input',
+		'name' => 'Github',
+	),
+	'google' => array(
+		'type' => 'input',
+		'name' => 'Google',
+	),
+	'twitter' => array(
+		'type' => 'input',
+		'name' => 'Twitter',
+	),
+	'facebook' => array(
+		'type' => 'input',
+		'name' => 'Facebook',
+	)
+);
+
 
 $bmqynext_options_menu = 'bmqynext_options_menu';
 $bmqynext_opt_show_nav_icon_name = 'bmqynext_opt_show_nav_icon';
@@ -52,59 +118,8 @@ if ( isset( $_POST[ $bmqynext_options_menu ] ) ) {
 
 	bmqynext_show_udpate_success();
 }
+
+bmqynext_generate_form('options_nav', $navMenu);
+
+bmqynext_generate_form('options_social', $socialMenu);
 ?>
-<form action="" method="post" name="form1" novalidate="novalidate">
-    <table class="form-table">
-        <tr>
-            <th scope="row"><label for="<?php echo $bmqynext_opt_show_nav_icon_name; ?>"><?php esc_html_e('Nav Icon', 'bmqynext') ?></label></th>
-            <td>
-                <fieldset>
-                    <legend class="screen-reader-text"><span><?php esc_html_e('Nav Icon', 'bmqynext') ?></span></legend>
-                    <label for="<?php echo $bmqynext_opt_show_nav_icon_name; ?>"><input name="<?php echo $bmqynext_opt_show_nav_icon_name; ?>" type="checkbox" id="<?php echo $bmqynext_opt_show_nav_icon_name; ?>" value="1" <?php checked( $bmqynext_opt_show_nav_icon_val ); ?> /></label>
-                </fieldset>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row"><label for="topRecommendTitle"><?php esc_html_e('Home', 'bmqynext') ?></label></th>
-            <td><input name="<?php echo $bmqynext_opt_nav_home_name; ?>" type="text" id="<?php echo $bmqynext_opt_nav_home_name; ?>" value="<?php echo $bmqynext_opt_nav_home_val; ?>" class="regular-text ltr"/></td>
-        </tr>
-        <tr>
-            <th scope="row"><label for="topRecommendTitle"><?php esc_html_e('Category', 'bmqynext') ?></label></th>
-            <td><input name="<?php echo $bmqynext_opt_nav_category_name; ?>" type="text" id="<?php echo $bmqynext_opt_nav_category_name; ?>" value="<?php echo $bmqynext_opt_nav_category_val; ?>" class="regular-text ltr"/></td>
-        </tr>
-        <tr>
-            <th scope="row"><label for="topRecommendTitle"><?php esc_html_e('About', 'bmqynext') ?></label></th>
-            <td><input name="<?php echo $bmqynext_opt_nav_about_name; ?>" type="text" id="<?php echo $bmqynext_opt_nav_about_name; ?>" value="<?php echo $bmqynext_opt_nav_about_val; ?>" class="regular-text ltr"/></td>
-        </tr>
-        <tr>
-            <th scope="row"><label for="topRecommendTitle"><?php esc_html_e('Archives', 'bmqynext') ?></label></th>
-            <td><input name="<?php echo $bmqynext_opt_nav_archives_name; ?>" type="text" id="<?php echo $bmqynext_opt_nav_archives_name; ?>" value="<?php echo $bmqynext_opt_nav_archives_val; ?>" class="regular-text ltr"/></td>
-        </tr>
-        <tr>
-            <th scope="row"><label for="topRecommendTitle"><?php esc_html_e('Tag', 'bmqynext') ?></label></th>
-            <td><input name="<?php echo $bmqynext_opt_nav_tag_name; ?>" type="text" id="<?php echo $bmqynext_opt_nav_tag_name; ?>" value="<?php echo $bmqynext_opt_nav_tag_val; ?>" class="regular-text ltr"/></td>
-        </tr>
-        <tr>
-            <th scope="row"><label for="topRecommendTitle"><?php esc_html_e('Sitemap', 'bmqynext') ?></label></th>
-            <td><input name="<?php echo $bmqynext_opt_nav_sitemap_name; ?>" type="text" id="<?php echo $bmqynext_opt_nav_sitemap_name; ?>" value="<?php echo $bmqynext_opt_nav_sitemap_val; ?>" class="regular-text ltr"/></td>
-        </tr>
-        <tr>
-            <th scope="row"><label for="topRecommendTitle"><?php esc_html_e('Search', 'bmqynext') ?></label></th>
-            <td><input name="<?php echo $bmqynext_opt_nav_search_name; ?>" type="text" id="<?php echo $bmqynext_opt_nav_search_name; ?>" value="<?php echo $bmqynext_opt_nav_search_val; ?>" class="regular-text ltr"/></td>
-        </tr>
-        <tr>
-            <th scope="row"><label for="<?php echo $bmqynext_opt_show_social_icon_name; ?>"><?php esc_html_e('Social Icon', 'bmqynext') ?></label></th>
-            <td>
-                <fieldset>
-                    <legend class="screen-reader-text"><span><?php esc_html_e('Social Icon', 'bmqynext') ?></span></legend>
-                    <label for="<?php echo $bmqynext_opt_show_social_icon_name; ?>"><input name="<?php echo $bmqynext_opt_show_social_icon_name; ?>" type="checkbox" id="<?php echo $bmqynext_opt_show_social_icon_name; ?>" value="1" <?php checked( $bmqynext_opt_show_social_icon_val ); ?> /></label>
-                </fieldset>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row"><label for="topRecommendTitle"><?php esc_html_e('Weibo', 'bmqynext') ?></label></th>
-            <td><input name="keyword" type="text" id="keyword" value="<?php echo $bmqynext_opt_keyword_val; ?>" class="regular-text ltr"/></td>
-        </tr>
-    </table>
-	<?php submit_button( __('Save Changes'), 'primary', $bmqynext_options_menu ); ?>
-</form>

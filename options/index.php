@@ -49,7 +49,7 @@ function bmqynext_settings() {
             <a href="<?php echo esc_url( add_query_arg( array( 'options' => 'ad' ), admin_url( 'themes.php?page=bmqynext_settings' ) ) ); ?>" class="nav-tab <?php if($options === 'ad') echo " nav-tab-active"?>"><?php esc_html_e('AD Settings', 'bmqynext') ?></a>
             <a href="<?php echo esc_url( add_query_arg( array( 'options' => 'other' ), admin_url( 'themes.php?page=bmqynext_settings' ) ) ); ?>" class="nav-tab <?php if($options === 'other') echo " nav-tab-active"?>"><?php esc_html_e('Other Settings', 'bmqynext') ?></a>
         </h2>
-        <div id="bmqynextOptionsFormBase">
+        <div id="bmqynextOptionsForm">
             <?php
             switch ($options){
                 case 'base':

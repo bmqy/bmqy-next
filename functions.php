@@ -1081,16 +1081,54 @@ if(!function_exists('bmqynext_show_udpate_success')){
 
 /*
  * 后台显示表单项
- * 表单名
- * 字段名
+ * 表单名称
+ * 字段信息
  * */
 if(!function_exists('bmqynext_generate_form')){
-	function bmqynext_show_form_item($formName, $item=[]){
-		echo '<form action="" method="post" name="form1" novalidate="novalidate">'
+	function bmqynext_generate_form($formName='', $items=[], $action=''){
+
+		if(empty($formName) || !is_array($items)){
+			return false;
+		}
+
+		$formName = wp_get_theme()->get('TextDomain').'_'. $formName;
+		$html = '<form action="'. $action .'" method="post" name="'. $formName .'" novalidate="novalidate">'
 		     .'<table class="form-table">';
 
-		echo '</table>'
-		     .submit_button( __(\"Save Changes\"), \"primary\", $formName ))
+		foreach($items as $item=>$val){
+			if (is_array($items[$item])){
+				$itemArr = $items[$item];
+				$filed = $formName .'_'. $item;
+				$type = $itemArr['type'];
+				$name = __($itemArr['name'], 'bmqynext');
+				$placeholder = !empty($itemArr['placeholder']) ? $itemArr['placeholder'] : '' ;
+				$tips = !empty($itemArr['tips']) ? $itemArr['tips'] : '' ;
+				switch ($type){
+					case 'checkbox':
+						$html .= '<tr>
+        <th scope="row"><label for="'. $filed .'">'. $name .'</label></th>
+        <td>
+            <fieldset>
+                <legend class="screen-reader-text"><span>'. $name .'</span></legend>
+                <label for="'. $filed .'"><input name="'. $filed .'" type="checkbox" id="'. $filed .'" value="1" '. checked(get_option($filed), true, false) .'>'. $tips .'</label>
+            </fieldset>
+        </td>
+    </tr>';
+						break;
+					case 'input':
+						$html .= '<tr>
+        <th scope="row"><label for="'. $filed .'">'. $name .'</label></th>
+        <td><input name="'. $filed .'" type="text" id="'. $filed .'" placeholder="'. $placeholder .'" value="" class="regular-text ltr"><p class="description" id="tagline-description">'. $tips .'</p></td>
+    </tr>';
+						break;
+				}
+			}
+		}
+
+		$html .= '</table>'
+		     .get_submit_button( __("Save Changes"), "primary", $formName )
 		     .'</form>';
+
+		echo $html;
 	}
 }
