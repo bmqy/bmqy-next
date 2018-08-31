@@ -11,66 +11,99 @@
 $navMenu = array(
 	'icon' => array(
 		'type' => 'checkbox',
-		'name' => 'Nav Icon',
+		'label' => 'Icon',
 	),
-	'home' => array(
+	'home_text' => array(
 		'type' => 'input',
-		'name' => 'Home',
-		'placeholder' => '请输入图标',
-		'tips' => '设置显示的图标',
+		'label' => 'Home',
+		'placeholder' => '链接文本，默认：首页',
 	),
-	'category' => array(
+	'home_link' => array(
 		'type' => 'input',
-		'name' => 'Category',
+		'label' => '',
+		'placeholder' => '链接地址，默认：/',
 	),
-	'about' => array(
+	'home_icon' => array(
 		'type' => 'input',
-		'name' => 'About',
+		'label' => '',
+		'placeholder' => '小图标，默认：fa-home',
 	),
-	'archives' => array(
+	'category_text' => array(
 		'type' => 'input',
-		'name' => 'Archives',
+		'label' => 'Category',
+		'placeholder' => '链接文本，默认：分类',
 	),
-	'tag' => array(
+	'category_link' => array(
 		'type' => 'input',
-		'name' => 'Tag',
+		'label' => '',
+		'placeholder' => '链接地址，默认：/category/',
 	),
-	'sitemap' => array(
+	'category_icon' => array(
 		'type' => 'input',
-		'name' => 'Sitemap',
+		'label' => '',
+		'placeholder' => '小图标，默认：fa-th',
+	),
+	'about_text' => array(
+		'type' => 'input',
+		'label' => 'About',
+		'placeholder' => '链接文本，默认：关于',
+	),
+	'about_link' => array(
+		'type' => 'input',
+		'label' => '',
+		'placeholder' => '链接地址，默认：/about/',
+	),
+	'about_icon' => array(
+		'type' => 'input',
+		'label' => '',
+		'placeholder' => '小图标，默认：fa-user',
+	),
+	'archives_text' => array(
+		'type' => 'input',
+		'label' => 'Archives',
+		'placeholder' => '链接文本，默认：归档',
+	),
+	'archives_link' => array(
+		'type' => 'input',
+		'label' => '',
+		'placeholder' => '链接地址，默认：/archives/',
+	),
+	'archives_icon' => array(
+		'type' => 'input',
+		'label' => '',
+		'placeholder' => '小图标，默认：fa-archive',
+	),
+	'tag_text' => array(
+		'type' => 'input',
+		'label' => 'Tag',
+		'placeholder' => '链接文本，默认：标签',
+	),
+	'tag_link' => array(
+		'type' => 'input',
+		'label' => '',
+		'placeholder' => '链接地址，默认：/tag/',
+	),
+	'tag_icon' => array(
+		'type' => 'input',
+		'label' => '',
+		'placeholder' => '小图标，默认：fa-tags',
+	),
+	'sitemap_text' => array(
+		'type' => 'input',
+		'label' => 'Sitemap',
+		'placeholder' => '链接文本，默认：站点地图',
+	),
+	'sitemap_link' => array(
+		'type' => 'input',
+		'label' => '',
+		'placeholder' => '链接地址，默认：/sitemap.xml',
+	),
+	'sitemap_icon' => array(
+		'type' => 'input',
+		'label' => '',
+		'placeholder' => '小图标，默认：fa-sitemap',
 	)
 );
-$socialMenu = array(
-	'icon' => array(
-		'type' => 'checkbox',
-		'name' => 'Social Icon',
-	),
-	'weibo' => array(
-		'type' => 'input',
-		'name' => 'Weibo',
-	),
-	'zhihu' => array(
-		'type' => 'input',
-		'name' => 'Zhihu',
-	),
-	'github' => array(
-		'type' => 'input',
-		'name' => 'Github',
-	),
-	'google' => array(
-		'type' => 'input',
-		'name' => 'Google',
-	),
-	'twitter' => array(
-		'type' => 'input',
-		'name' => 'Twitter',
-	),
-	'facebook' => array(
-		'type' => 'input',
-		'name' => 'Facebook',
-	)
-);
-
 
 $bmqynext_options_menu = 'bmqynext_options_menu';
 $bmqynext_opt_show_nav_icon_name = 'bmqynext_opt_show_nav_icon';
@@ -121,5 +154,4 @@ if ( isset( $_POST[ $bmqynext_options_menu ] ) ) {
 
 bmqynext_generate_form('options_nav', $navMenu);
 
-bmqynext_generate_form('options_social', $socialMenu);
 ?>

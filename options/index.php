@@ -44,7 +44,8 @@ function bmqynext_settings() {
 		<h2 class="screen-reader-text"><?php echo __( 'Bmqy-next Settings', 'bmqynext' )?></h2>
         <h2 class="nav-tab-wrapper wp-clearfix">
             <a href="<?php echo admin_url( 'themes.php?page=bmqynext_settings' ); ?>" class="nav-tab <?php if($options === 'base') echo " nav-tab-active"?>"><?php esc_html_e('Base Settings', 'bmqynext') ?></a>
-            <a href="<?php echo esc_url( add_query_arg( array( 'options' => 'menu' ), admin_url( 'themes.php?page=bmqynext_settings' ) ) ); ?>" class="nav-tab <?php if($options === 'menu') echo " nav-tab-active"?>"><?php esc_html_e('Menu Settings', 'bmqynext') ?></a>
+            <a href="<?php echo esc_url( add_query_arg( array( 'options' => 'nav' ), admin_url( 'themes.php?page=bmqynext_settings' ) ) ); ?>" class="nav-tab <?php if($options === 'nav') echo " nav-tab-active"?>"><?php esc_html_e('Nav Settings', 'bmqynext') ?></a>
+            <a href="<?php echo esc_url( add_query_arg( array( 'options' => 'social' ), admin_url( 'themes.php?page=bmqynext_settings' ) ) ); ?>" class="nav-tab <?php if($options === 'social') echo " nav-tab-active"?>"><?php esc_html_e('Social Settings', 'bmqynext') ?></a>
             <a href="<?php echo esc_url( add_query_arg( array( 'options' => 'author' ), admin_url( 'themes.php?page=bmqynext_settings' ) ) ); ?>" class="nav-tab <?php if($options === 'author') echo " nav-tab-active"?>"><?php esc_html_e('Author Settings', 'bmqynext') ?></a>
             <a href="<?php echo esc_url( add_query_arg( array( 'options' => 'ad' ), admin_url( 'themes.php?page=bmqynext_settings' ) ) ); ?>" class="nav-tab <?php if($options === 'ad') echo " nav-tab-active"?>"><?php esc_html_e('AD Settings', 'bmqynext') ?></a>
             <a href="<?php echo esc_url( add_query_arg( array( 'options' => 'other' ), admin_url( 'themes.php?page=bmqynext_settings' ) ) ); ?>" class="nav-tab <?php if($options === 'other') echo " nav-tab-active"?>"><?php esc_html_e('Other Settings', 'bmqynext') ?></a>
@@ -55,8 +56,11 @@ function bmqynext_settings() {
                 case 'base':
                     include_once('base.php');
                     break;
-                case 'menu':
-	                include_once('menus.php');
+                case 'nav':
+	                include_once( 'nav.php' );
+                    break;
+                case 'social':
+	                include_once( 'social.php' );
                     break;
                 case 'author':
 	                include_once('author.php');

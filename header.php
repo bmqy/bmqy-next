@@ -115,7 +115,10 @@
             <?php endif; ?>
 	            <?php if ( has_nav_menu( 'primary' ) || has_nav_menu( 'social' ) ) : ?>
                     <ul id="menu" class="menu">
-			            <?php if ( has_nav_menu( 'primary' ) ) : ?>
+			            <?php
+                        if(get_option('enabled_wordpress_nav')):
+                            if ( has_nav_menu( 'primary' ) ) :
+                        ?>
                             <li class="menu-item menu-item-<?php esc_attr_e( 'Primary Menu', 'bmqynext' ); ?>">
 					            <?php
 					            bmqynext_wp_nav_menu( array(
@@ -130,7 +133,14 @@
                                     <i class="menu-item-icon fa fa-search fa-fw"></i> <br /><?php /*echo __("Search")*/?>
                                 </a>
                             </li>-->
-			            <?php endif; ?>
+			            <?php
+                            endif;
+                        else:
+                        ?>
+	                        <?php get_template_part('template-parts/nav', 'bmqynext-nav')?>
+                        <?php
+                        endif;
+		                ?>
                     </ul><!-- .site-header-menu -->
 
                     <div class="site-search">

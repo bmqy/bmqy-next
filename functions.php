@@ -1070,6 +1070,11 @@ if(get_option('bmqynext_opt_html_compress')==='1'){
 }
 
 /*
+ * 后台启用友情链接管理
+ * */
+add_filter('pre_option_link_manager_enabled','__return_true');
+
+/*
  * 后台显示更新成功提示信息
  * */
 if(!function_exists('bmqynext_show_udpate_success')){
@@ -1100,16 +1105,20 @@ if(!function_exists('bmqynext_generate_form')){
 				$itemArr = $items[$item];
 				$filed = $formName .'_'. $item;
 				$type = $itemArr['type'];
-				$name = __($itemArr['name'], 'bmqynext');
+				$label = __($itemArr['label'], 'bmqynext');
 				$placeholder = !empty($itemArr['placeholder']) ? $itemArr['placeholder'] : '' ;
 				$tips = !empty($itemArr['tips']) ? $itemArr['tips'] : '' ;
+				$size = !empty($itemArr['size']) ? $itemArr['size'] : 'regular' ;
+				if($size!=='min' && $size!=='small' && $size!=='regular' && $size!=='large'){
+					$size = 'regular';
+				}
 				switch ($type){
 					case 'checkbox':
 						$html .= '<tr>
-        <th scope="row"><label for="'. $filed .'">'. $name .'</label></th>
+        <th scope="row"><label for="'. $filed .'">'. $label .'</label></th>
         <td>
             <fieldset>
-                <legend class="screen-reader-text"><span>'. $name .'</span></legend>
+                <legend class="screen-reader-text"><span>'. $label .'</span></legend>
                 <label for="'. $filed .'"><input name="'. $filed .'" type="checkbox" id="'. $filed .'" value="1" '. checked(get_option($filed), true, false) .'>'. $tips .'</label>
             </fieldset>
         </td>
@@ -1117,8 +1126,8 @@ if(!function_exists('bmqynext_generate_form')){
 						break;
 					case 'input':
 						$html .= '<tr>
-        <th scope="row"><label for="'. $filed .'">'. $name .'</label></th>
-        <td><input name="'. $filed .'" type="text" id="'. $filed .'" placeholder="'. $placeholder .'" value="" class="regular-text ltr"><p class="description" id="tagline-description">'. $tips .'</p></td>
+        <th scope="row"><label for="'. $filed .'">'. $label .'</label></th>
+        <td><input name="'. $filed .'" type="text" id="'. $filed .'" placeholder="'. $placeholder .'" value="" class="'. $size .'-text ltr">'. (!empty($tips) ? '<p class="description" id="tagline-description">'. $tips .'</p>' : '') . '</td>
     </tr>';
 						break;
 				}
