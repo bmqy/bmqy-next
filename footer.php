@@ -11,7 +11,7 @@
 ?>
     <footer id="footer" class="footer">
         <div class="footer-inner">
-            <div class="copyright">© 2014 - <span itemprop="copyrightYear"><?php the_time("Y") ?></span> <span class="with-love"><i class="fa fa-heart"></i> </span><span class="author" itemprop="copyrightHolder">北门清燕</span>
+            <div class="copyright">© <?php echo !empty(get_option('bmqynext_options_since')) ? get_option('bmqynext_options_since') : '2014' ?> - <span itemprop="copyrightYear"><?php the_time("Y") ?></span> <span class="with-love"><i class="fa fa-heart"></i> </span><span class="author" itemprop="copyrightHolder">北门清燕</span>
             </div>
         </div>
     </footer>

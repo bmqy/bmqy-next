@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Sixteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-09-03 15:34+0800\n"
+"PO-Revision-Date: 2018-09-03 17:12+0800\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -370,8 +370,15 @@ msgstr "版权设置"
 msgid "AD Settings"
 msgstr "广告设置"
 
+msgid "Statistics and analysis"
+msgstr "统计分析"
+
 msgid "Other Settings"
 msgstr "其它设置"
+
+#. Site since
+msgid "Site since"
+msgstr "建站时间"
 
 #. website settings
 msgid "Home Logo display"
@@ -384,6 +391,10 @@ msgstr "站点关键词"
 #. website settings
 msgid "Site description"
 msgstr "站点描述"
+
+#. Site since tips
+msgid "This time will be displayed at the bottom of the site, for example: ©2014 - 2018."
+msgstr "这个时间将在站点的底部显示，例如：©2014 - 2018。"
 
 #. upload logo tips
 msgid "(please upload your logo icon in \"appearance &gt; Custom &gt; site identity\")"
@@ -412,6 +423,30 @@ msgstr "版权适用分类"
 #. copyright apply category tips
 msgid "Multiple IDs are separated by \",\", where the article under the category is specified and the specified copyright content is displayed."
 msgstr "多个ID以“,”分隔，在此指定分类下的文章，将显示指定版权内容。"
+
+#. google analytics
+msgid "Baidu site verification"
+msgstr "百度网站验证"
+
+#. baidu analytics
+msgid "Baidu analytics"
+msgstr "百度统计"
+
+#. google analytics
+msgid "Google site verification"
+msgstr "谷歌网站验证"
+
+#. google analytics
+msgid "Google analytics"
+msgstr "谷歌统计"
+
+#. cnzz analytics
+msgid "CNZZ analytics"
+msgstr "CNZZ统计"
+
+#. baidu analytics tips
+msgid "Baidu_analytics is not your Baidu id or Baidu stat id, is the string of statistical script id after \"hm.js?\""
+msgstr "baidu_analytics不是你的百度id或者百度统计id，是“hm.js?”后面那串统计脚本id"
 
 #. Eevee tips
 msgid "Eevee display"

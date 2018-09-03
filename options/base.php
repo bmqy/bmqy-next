@@ -8,6 +8,12 @@
 
 $formName = wp_get_theme()->get('TextDomain'). '_options';
 $baseItem = [
+        'show_logo'=>[
+            'type'=> 'checkbox',
+            'label'=> 'Home Logo display',
+            'tips'=> '(please upload your logo icon in "appearance &gt; Custom &gt; site identity")',
+            'defaultValue'=> 1
+        ],
         'keyword'=>[
             'type'=> 'input',
             'label'=> 'Site keyword',
@@ -21,12 +27,12 @@ $baseItem = [
             'placeholder'=> '',
             'defaultValue'=> '',
         ],
-        'show_logo'=>[
-	        'type'=> 'checkbox',
-	        'label'=> 'Home Logo display',
-	        'tips'=> '(please upload your logo icon in "appearance &gt; Custom &gt; site identity")',
-            'defaultValue'=> 1
-        ]
+        'since'=>[
+	        'type'=> 'input',
+	        'label'=> 'Site since',
+	        'placeholder'=> '2014',
+	        'tips'=> 'This time will be displayed at the bottom of the site, for example: ©2014 - 2018.',
+        ],
 ];
 
 if ( isset( $_POST[ $formName ] ) ) {

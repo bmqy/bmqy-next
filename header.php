@@ -18,13 +18,17 @@
     <!-- Disable Baidu tranformation -->
     <meta http-equiv="Cache-Control" content="no-transform" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-	<?php if(false): ?>
+	<?php if(!empty(get_option('bmqynext_options_baidu_site_verification'))): ?>
+    <!-- baidu_site_verification -->
+    <meta name="baidu-site-verification" content="<?php echo get_option('bmqynext_options_baidu_site_verification')?>" />
+	<?php endif; ?>
+	<?php if(!empty(get_option('bmqynext_options_google_site_verification'))): ?>
     <!-- google_site_verification -->
-    <meta name="google-site-verification" content="{{ theme.google_site_verification }}" />
+    <meta name="google-site-verification" content="<?php echo get_option('bmqynext_options_google_site_verification') ?>" />
+	<?php endif; ?>
+	<?php if(false): ?>
     <!-- yandex_site_verification -->
     <meta name="yandex-verification" content="{{ theme.yandex_site_verification }}" />
-    <!-- baidu_site_verification -->
-    <meta name="baidu-site-verification" content="{{ theme.baidu_site_verification }}" />
     <!-- qihu_site_verification -->
     <meta name="360-site-verification" content="{{ theme.qihu_site_verification }}" />
 	<?php endif; ?>
@@ -36,9 +40,6 @@
 	<?php bmqynext_wp_head() ?>
     <meta name="keywords" content="<?php echo bmqynext_get_options_keyword() ?>">
     <meta name="description" content="<?php echo bmqynext_get_options_description() ?>">
-    <?php if(false): ?>
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri()."/css/eevee.css" ?>">
-    <?php endif; ?>
     <!-- Export some HEXO Configurations to Front-End -->
     <script type="text/javascript" id="hexo.configurations">
         var NexT = window.NexT || {},
@@ -62,6 +63,7 @@
             }
         }
     </script>
+    <?php include_once('template-parts/analytics/index.php') ?>
 </head>
 
 <body <?php body_class(); ?>>
