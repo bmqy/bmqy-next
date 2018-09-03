@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Sixteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-08-31 16:33+0800\n"
+"PO-Revision-Date: 2018-09-03 15:34+0800\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -364,14 +364,6 @@ msgstr "bmqy-next 主题选项"
 msgid "Base Settings"
 msgstr "基本设置"
 
-#. theme options nav
-msgid "Nav Settings"
-msgstr "导航设置"
-
-#. theme options scial
-msgid "Social Settings"
-msgstr "社交链接"
-
 msgid "Author Settings"
 msgstr "版权设置"
 
@@ -397,77 +389,29 @@ msgstr "站点描述"
 msgid "(please upload your logo icon in \"appearance &gt; Custom &gt; site identity\")"
 msgstr "（请在“外观-&gt;自定义-&gt;站点身份”中上传您的logo图标）"
 
-#. icon
-msgid "Icon"
+#. nav icon
+msgid "Nav Icon"
 msgstr "图标"
-
-#. nav index
-msgid "Home"
-msgstr "首页"
-
-#. nav category
-msgid "Category"
-msgstr "分类"
-
-#. nav about
-msgid "About"
-msgstr "关于"
-
-#. nav archives
-msgid "Archives"
-msgstr "归档"
-
-#. nav tag
-msgid "Tag"
-msgstr "标签"
-
-#. nav sitemap
-msgid "Sitemap"
-msgstr "站点地图"
-
-#. nav search
-msgid "Search"
-msgstr "搜索"
 
 #. social icon
 msgid "Social Icon"
 msgstr "社交图标"
 
-#. social weibo
-msgid "Weibo"
-msgstr "微博"
+#. copyright display
+msgid "Copyright display"
+msgstr "显示版权"
 
-#. social douban
-msgid "Douban"
-msgstr "豆瓣"
+#. copyright Content
+msgid "Copyright Content"
+msgstr "版权内容"
 
-#. social zhihu
-msgid "Zhihu"
-msgstr "知乎"
+#. copyright apply category
+msgid "Copyright Apply Category"
+msgstr "版权适用分类"
 
-#. social weixin
-msgid "Wechat"
-msgstr "微信"
-
-#. social github
-msgid "Github"
-msgstr "GitHub"
-
-#. social google
-msgid "Google"
-msgstr "谷歌"
-
-#. social facebook
-msgid "Facebook"
-msgstr "脸书"
-
-#. social twitter
-msgid "Twitter"
-msgstr "推特"
-
-#. social linkdin
-msgid "Linkdin"
-msgstr "领英"
+#. copyright apply category tips
+msgid "Multiple IDs are separated by \",\", where the article under the category is specified and the specified copyright content is displayed."
+msgstr "多个ID以“,”分隔，在此指定分类下的文章，将显示指定版权内容。"
 
 #. Eevee tips
 msgid "Eevee display"

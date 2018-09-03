@@ -1096,18 +1096,23 @@ if(!function_exists('bmqynext_generate_form')){
 			return false;
 		}
 
-		$formName = wp_get_theme()->get('TextDomain').'_'. $formName;
+		$textDomain = wp_get_theme()->get('TextDomain');
 		$html = '<form action="'. $action .'" method="post" name="'. $formName .'" novalidate="novalidate">'
 		     .'<table class="form-table">';
 
 		foreach($items as $item=>$val){
 			if (is_array($items[$item])){
+				$siteFiled = [
+					'keyword',
+					'description'
+				];
 				$itemArr = $items[$item];
-				$filed = $formName .'_'. $item;
+				$field = !in_array($item, $siteFiled) ? $formName .'_'. $item : $item;
 				$type = $itemArr['type'];
-				$label = __($itemArr['label'], 'bmqynext');
+				$label = __($itemArr['label'], $textDomain);
+				$defaultValue = !empty(get_option($field)) ? get_option($field) : (!empty($itemArr['defaultValue'])?$itemArr['defaultValue']:'');
 				$placeholder = !empty($itemArr['placeholder']) ? $itemArr['placeholder'] : '' ;
-				$tips = !empty($itemArr['tips']) ? $itemArr['tips'] : '' ;
+				$tips = !empty($itemArr['tips']) ? __($itemArr['tips'], $textDomain) : '' ;
 				$size = !empty($itemArr['size']) ? $itemArr['size'] : 'regular' ;
 				if($size!=='min' && $size!=='small' && $size!=='regular' && $size!=='large'){
 					$size = 'regular';
@@ -1115,20 +1120,26 @@ if(!function_exists('bmqynext_generate_form')){
 				switch ($type){
 					case 'checkbox':
 						$html .= '<tr>
-        <th scope="row"><label for="'. $filed .'">'. $label .'</label></th>
+        <th scope="row"><label for="'. $field .'">'. $label .'</label></th>
         <td>
             <fieldset>
                 <legend class="screen-reader-text"><span>'. $label .'</span></legend>
-                <label for="'. $filed .'"><input name="'. $filed .'" type="checkbox" id="'. $filed .'" value="1" '. checked(get_option($filed), true, false) .'>'. $tips .'</label>
+                <label for="'. $field .'"><input name="'. $field .'" type="checkbox" id="'. $field .'" value="'. $defaultValue .'" '. checked(get_option($field), true, false) .'>'. $tips .'</label>
             </fieldset>
         </td>
     </tr>';
 						break;
 					case 'input':
 						$html .= '<tr>
-        <th scope="row"><label for="'. $filed .'">'. $label .'</label></th>
-        <td><input name="'. $filed .'" type="text" id="'. $filed .'" placeholder="'. $placeholder .'" value="" class="'. $size .'-text ltr">'. (!empty($tips) ? '<p class="description" id="tagline-description">'. $tips .'</p>' : '') . '</td>
+        <th scope="row"><label for="'. $field .'">'. $label .'</label></th>
+        <td><input name="'. $field .'" type="text" id="'. $field .'" placeholder="'. $placeholder .'" value="'. $defaultValue .'" class="'. $size .'-text ltr">'. (!empty($tips) ? '<p class="description" id="tagline-description">'. $tips .'</p>' : '') . '</td>
     </tr>';
+						break;
+					case 'textarea':
+						$html .= '<tr>
+            <th scope="row"><label for="'. $field .'">'. $label .'</label></th>
+            <td><textarea name="'. $field .'" id="'. $field .'" rows="5" cols="30" class="'. $size .'-text" placeholder="'. $placeholder .'">'. $defaultValue .'</textarea></td>
+        </tr>';
 						break;
 				}
 			}

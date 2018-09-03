@@ -6,44 +6,50 @@
  * Time: 13:20
  */
 
-$bmqynext_options_base = 'bmqynext_options_base';
-$bmqynext_opt_show_logo_name = 'bmqynext_opt_show_logo';
+$formName = wp_get_theme()->get('TextDomain'). '_options';
+$baseItem = [
+        'keyword'=>[
+            'type'=> 'input',
+            'label'=> 'Site keyword',
+            'placeholder'=> '',
+            'defaultValue'=> '',
+        ],
+        'description'=>[
+            'type'=> 'textarea',
+            'label'=> 'Site description',
+            'size'=> 'large',
+            'placeholder'=> '',
+            'defaultValue'=> '',
+        ],
+        'show_logo'=>[
+	        'type'=> 'checkbox',
+	        'label'=> 'Home Logo display',
+	        'tips'=> '(please upload your logo icon in "appearance &gt; Custom &gt; site identity")',
+            'defaultValue'=> 1
+        ]
+];
 
-$bmqynext_opt_show_logo_val = get_option( $bmqynext_opt_show_logo_name );
-$bmqynext_opt_description_val = get_option( 'description' );
-$bmqynext_opt_keyword_val = get_option( 'keyword' );
+if ( isset( $_POST[ $formName ] ) ) {
+	$siteFiled = [
+		'keyword',
+		'description'
+	];
 
-if ( isset( $_POST[ $bmqynext_options_base ] ) ) {
-	$bmqynext_opt_show_logo_val = !empty($_POST[ $bmqynext_opt_show_logo_name ]) ? $_POST[ $bmqynext_opt_show_logo_name ] : 0;
-	$bmqynext_opt_description_val = $_POST[ 'description' ];
-	$bmqynext_opt_keyword_val = $_POST[ 'keyword' ];
+    foreach ($baseItem as $item=> $val){
+        $field = !in_array($item, $siteFiled) ? $formName .'_'. $item : $item;
+        if($baseItem[$item]['type']==='checkbox'){
+            $value = !empty($_POST[$field]) ? $_POST[$field] : 0;
+        }
+        else{
+	        $value = $_POST[$field];
+        }
 
-	update_option( $bmqynext_opt_show_logo_name, $bmqynext_opt_show_logo_val );
-	update_option( 'description', $bmqynext_opt_description_val );
-	update_option( 'keyword', $bmqynext_opt_keyword_val );
+        update_option($field, $value);
+
+    }
 
 	bmqynext_show_udpate_success();
 }
+
+bmqynext_generate_form($formName, $baseItem);
 ?>
-<form action="" method="post" name="form1" novalidate="novalidate">
-    <table class="form-table">
-        <tr>
-            <th scope="row"><label for="topRecommendTitle"><?php esc_html_e('Site keyword', 'bmqynext') ?></label></th>
-            <td><input name="keyword" type="text" id="keyword" value="<?php echo $bmqynext_opt_keyword_val; ?>" class="regular-text ltr"/></td>
-        </tr>
-        <tr>
-            <th scope="row"><label for="topRecommendTitle"><?php esc_html_e('Site description', 'bmqynext') ?></label></th>
-            <td><textarea name="description" id="description" rows="5" cols="30" class="large-text"><?php echo $bmqynext_opt_description_val; ?></textarea></td>
-        </tr>
-        <tr>
-            <th scope="row"><label for="<?php echo $bmqynext_opt_show_logo_name; ?>"><?php esc_html_e('Home Logo display', 'bmqynext') ?></label></th>
-            <td>
-                <fieldset>
-                    <legend class="screen-reader-text"><span><?php esc_html_e('Home Logo display', 'bmqynext') ?></span></legend>
-                    <label for="<?php echo $bmqynext_opt_show_logo_name; ?>"><input name="<?php echo $bmqynext_opt_show_logo_name; ?>" type="checkbox" id="<?php echo $bmqynext_opt_show_logo_name; ?>" value="1" <?php checked( $bmqynext_opt_show_logo_val ); ?> />&nbsp;<?php esc_html_e('Activate') ?> <?php esc_html_e('(please upload your logo icon in "appearance &gt; Custom &gt; site identity")', 'bmqynext') ?></label>
-                </fieldset>
-            </td>
-        </tr>
-    </table>
-	<?php submit_button( __('Save Changes'), 'primary', $bmqynext_options_base ); ?>
-</form>
