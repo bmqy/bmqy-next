@@ -22,17 +22,22 @@
     <!-- baidu_site_verification -->
     <meta name="baidu-site-verification" content="<?php echo get_option('bmqynext_options_baidu_site_verification')?>" />
 	<?php endif; ?>
+	<?php if(!empty(get_option('bmqynext_options_qihu_site_verification'))): ?>
+        <!-- qihu_site_verification -->
+        <meta name="360-site-verification" content="<?php echo get_option('bmqynext_options_qihu_site_verification')?>" />
+	<?php endif; ?>
 	<?php if(!empty(get_option('bmqynext_options_google_site_verification'))): ?>
     <!-- google_site_verification -->
     <meta name="google-site-verification" content="<?php echo get_option('bmqynext_options_google_site_verification') ?>" />
 	<?php endif; ?>
-	<?php if(false): ?>
+	<?php if(!empty(get_option('bmqynext_options_yandex_site_verification'))): ?>
     <!-- yandex_site_verification -->
-    <meta name="yandex-verification" content="{{ theme.yandex_site_verification }}" />
-    <!-- qihu_site_verification -->
-    <meta name="360-site-verification" content="{{ theme.qihu_site_verification }}" />
+    <meta name="yandex-verification" content="<?php echo get_option('bmqynext_options_yandex_site_verification') ?>" />
 	<?php endif; ?>
-
+	<?php if(!empty(get_option('bmqynext_options_bing_site_verification'))): ?>
+    <!-- bing_site_verification -->
+    <meta name="msvalidate.01" content="<?php echo get_option('bmqynext_options_bing_site_verification') ?>" />
+	<?php endif; ?>
     <link rel="profile" href="http://gmpg.org/xfn/11">
 	<?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">

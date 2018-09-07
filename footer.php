@@ -21,7 +21,7 @@
 <?php wp_footer(); ?>
 
 <?php
-if(get_option('bmqynext_opt_show_eevee')==='1') {
+if(get_option('bmqynext_options_show_eevee')==='1') {
 	get_template_part( "template-parts/eevee/eevee", "bmqynext-eevee" );
 }
 ?>

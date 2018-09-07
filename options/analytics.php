@@ -12,11 +12,24 @@ $baseItem = [
 	'baidu_site_verification'=>[
 		'type'=> 'input',
 		'label'=> 'Baidu site verification',
+		'tips'=> 'Please enter the contents of the content attribute in the HTML label validation mode.'
 	],
 	'baidu_analytics'=>[
 		'type'=> 'input',
 		'label'=> 'Baidu analytics',
 		'tips'=> 'Baidu_analytics is not your Baidu id or Baidu stat id, is the string of statistical script id after "hm.js?"'
+	],
+	'cnzz_analytics'=>[
+		'type'=> 'input',
+		'label'=> 'CNZZ analytics',
+	],
+	'qihu_site_verification'=>[
+		'type'=> 'input',
+		'label'=> 'Qihu site verification',
+	],
+	'qihu_sitemap_auto'=>[
+		'type'=> 'input',
+		'label'=> 'Qihu sitemap auto',
 	],
 	'google_site_verification'=>[
 		'type'=> 'input',
@@ -26,9 +39,17 @@ $baseItem = [
 		'type'=> 'input',
 		'label'=> 'Google analytics',
 	],
-	'cnzz_analytics'=>[
+	'yandex_site_verification'=>[
 		'type'=> 'input',
-		'label'=> 'CNZZ analytics',
+		'label'=> 'Yandex site verification',
+	],
+	'bing_site_verification'=>[
+		'type'=> 'input',
+		'label'=> 'Bing site verification',
+	],
+	'bing_analytics'=>[
+		'type'=> 'input',
+		'label'=> 'Bing analytics',
 	],
 ];
 

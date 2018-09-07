@@ -6,6 +6,9 @@
  * Time: 16:52
  */
 ?>
-<?php include_once('baidu.php') ?>
-<?php include_once('google.php') ?>
-<?php include_once('cnzz.php') ?>
+<div style="display: none;">
+	<?php include_once('baidu.php') ?>
+	<?php include_once('cnzz.php') ?>
+	<?php include_once('qihu.php') ?>
+	<?php include_once('google.php') ?>
+</div>

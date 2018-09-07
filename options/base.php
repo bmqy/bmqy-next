@@ -9,7 +9,7 @@
 $formName = wp_get_theme()->get('TextDomain'). '_options';
 $baseItem = [
         'show_logo'=>[
-            'type'=> 'checkbox',
+            'type'=> 'switch',
             'label'=> 'Home Logo display',
             'tips'=> '(please upload your logo icon in "appearance &gt; Custom &gt; site identity")',
             'defaultValue'=> 1

@@ -10,14 +10,15 @@
 $formName = wp_get_theme()->get('TextDomain'). '_options';
 $baseItem = [
 	'show_copyright'=>[
-		'type'=> 'checkbox',
+		'type'=> 'switch',
 		'label'=> 'Copyright display',
 		'defaultValue'=> 1,
 	],
 	'copyright_apply_category'=>[
-		'type'=> 'input',
+		'type'=> 'checkbox',
 		'label'=> 'Copyright Apply Category',
-        'tips'=> 'Multiple IDs are separated by ",", where the article under the category is specified and the specified copyright content is displayed.'
+		'defaultValue'=> 1,
+		'values'=> bmqynext_getCategorysArray(),
 	],
 	'copyright_template'=>[
 		'type'=> 'textarea',

@@ -176,7 +176,7 @@ function bmqynext_scripts() {
 	wp_enqueue_style( 'bmqynext-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'bmqynext-font-awesome', get_template_directory_uri().'/lib/font-awesome/css/font-awesome.min.css', '', '4.7.0' );
 	wp_enqueue_style( 'bmqynext-fancybox-css', get_template_directory_uri().'/lib/fancybox/source/jquery.fancybox.css', '', '4.7.0' );
-	if(get_option('bmqynext_opt_show_eevee')==='1') {
+	if(get_option('bmqynext_options_show_eevee')==='1') {
 		wp_enqueue_style( 'bmqynext-eevee', get_template_directory_uri() . '/template-parts/eevee/eevee.css', '', '20180625' );
 	}
 
@@ -191,7 +191,7 @@ function bmqynext_scripts() {
 	wp_enqueue_script( 'bmqynext-scrollspy', get_template_directory_uri().'/js/src/scrollspy.js', '', '5.1.1', true );
 	wp_enqueue_script( 'bmqynext-post_details', get_template_directory_uri().'/js/src/post-details.js', '', '5.1.1', true );
 	wp_enqueue_script( 'bmqynext-bootstrap', get_template_directory_uri().'/js/src/bootstrap.js', '', '5.1.1', true );
-	if(get_option('bmqynext_opt_mouse_effects')==='1'){
+	if(get_option('bmqynext_options_mouse_effects')==='1'){
 		wp_enqueue_script( 'bmqynext-mouse_click_effects', get_template_directory_uri().'/js/src/mouse_click_effects.js', '', '20180625', true );
 	}
 
@@ -1085,6 +1085,35 @@ if(!function_exists('bmqynext_show_udpate_success')){
 }
 
 /*
+ * 返回站点所有文章分类信息的数组
+ * */
+if(!function_exists('bmqynext_getCategorysArray')){
+	function bmqynext_getCategorysArray() {
+		global $wpdb;
+		$request = "SELECT $wpdb->terms.term_id, name FROM $wpdb->terms ";
+		$request.= " LEFT JOIN $wpdb->term_taxonomy ON $wpdb->term_taxonomy.term_id = $wpdb->terms.term_id ";
+		$request.= " WHERE $wpdb->term_taxonomy.taxonomy = 'category' ";
+		$request.= " ORDER BY term_id asc";
+		$categorys = $wpdb->get_results($request);
+
+		$categorysArr = [];
+
+		foreach ($categorys as $category){
+			$categorysArr[$category->term_id]= $category->name;
+		}
+
+		return $categorysArr;
+/*		$output = '<ul id="categorychecklist" data-wp-lists="list:category" class="categorychecklist form-no-clear">';
+		foreach ($categorys as $category) { //调用菜单
+			$categoryId = $category->term_id;
+			$categoryName = $category->name;
+			$output .= '<li id="category-'. $categoryId .'" class="popular-category"><label class="selectit"><input value="'. $categoryId .'" type="checkbox" name="post_category[]" id="in-category-'. $categoryId .'"> '. $categoryName .'</label></li>';
+		}
+		echo $output .'</ul>';*/
+	}
+}
+
+/*
  * 后台显示表单项
  * 表单名称
  * 字段信息
@@ -1110,6 +1139,7 @@ if(!function_exists('bmqynext_generate_form')){
 				$field = !in_array($item, $siteFiled) ? $formName .'_'. $item : $item;
 				$type = $itemArr['type'];
 				$label = __($itemArr['label'], $textDomain);
+				$values = !empty($itemArr['values']) ? $itemArr['values'] : null;
 				$defaultValue = !empty(get_option($field)) ? get_option($field) : (!empty($itemArr['defaultValue'])?$itemArr['defaultValue']:'');
 				$placeholder = !empty($itemArr['placeholder']) ? $itemArr['placeholder'] : '' ;
 				$tips = !empty($itemArr['tips']) ? __($itemArr['tips'], $textDomain) : '' ;
@@ -1118,7 +1148,7 @@ if(!function_exists('bmqynext_generate_form')){
 					$size = 'regular';
 				}
 				switch ($type){
-					case 'checkbox':
+					case 'switch':
 						$html .= '<tr>
         <th scope="row"><label for="'. $field .'">'. $label .'</label></th>
         <td>
@@ -1126,6 +1156,30 @@ if(!function_exists('bmqynext_generate_form')){
                 <legend class="screen-reader-text"><span>'. $label .'</span></legend>
                 <label for="'. $field .'"><input name="'. $field .'" type="checkbox" id="'. $field .'" value="'. $defaultValue .'" '. checked(get_option($field), true, false) .'>'. $tips .'</label>
             </fieldset>
+        </td>
+    </tr>';
+						break;
+					case 'checkbox':
+						$opts = '';
+						foreach ($values as $key=>$value) {
+							$opts .= '<label><input class="hide-column-tog" name="'. $field .'" type="checkbox" id="'. $field .'" value="'. $key .'" '. selected($defaultValue, $key, false) .'>'. $value .'</label>';
+						}
+						$html .= '<tr>
+<th scope="row"><label for="'. $field .'">'. $label .'</label></th>
+        <td>
+        <fieldset class="metabox-prefs">'. $opts .'</fieldset>
+        </td>
+    </tr>';
+						break;
+					case 'select':
+						$opts = '';
+						foreach ($values as $key=>$value){
+							$opts .= '<option '. selected($defaultValue, $key, false) .' value="'. $key .'">'. $value .'</option>';
+						}
+						$html .= '<tr>
+        <th scope="row"><label for="'. $field .'">'. $label .'</label></th>
+        <td>
+	        <select name="'. $field .'" id="'. $field .'">'. $opts .'</select>
         </td>
     </tr>';
 						break;
