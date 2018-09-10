@@ -1161,8 +1161,14 @@ if(!function_exists('bmqynext_generate_form')){
 						break;
 					case 'checkbox':
 						$opts = '';
-						foreach ($values as $key=>$value) {
-							$opts .= '<label><input class="hide-column-tog" name="'. $field .'" type="checkbox" id="'. $field .'" value="'. $key .'" '. selected($defaultValue, $key, false) .'>'. $value .'</label>';
+						if(!is_array($defaultValue)){
+							foreach ($values as $key=>$value) {
+								$opts .= '<label><input class="hide-column-tog" name="'. $field .'[]" type="checkbox" id="'. $field .'" value="'. $key .'" '. checked($defaultValue, $key, false) .'>'. $value .'</label>';
+							}
+						}else{
+							foreach ($values as $key=>$value) {
+								$opts .= '<label><input class="hide-column-tog" name="'. $field .'[]" type="checkbox" id="'. $field .'" value="'. $key .'" '. (in_array($key, $defaultValue)?' checked':'') .'>'. $value .'</label>';
+							}
 						}
 						$html .= '<tr>
 <th scope="row"><label for="'. $field .'">'. $label .'</label></th>
@@ -1192,7 +1198,7 @@ if(!function_exists('bmqynext_generate_form')){
 					case 'textarea':
 						$html .= '<tr>
             <th scope="row"><label for="'. $field .'">'. $label .'</label></th>
-            <td><textarea name="'. $field .'" id="'. $field .'" rows="5" cols="30" class="'. $size .'-text" placeholder="'. $placeholder .'">'. $defaultValue .'</textarea></td>
+            <td><textarea name="'. $field .'" id="'. $field .'" rows="5" cols="30" class="'. $size .'-text" placeholder="'. $placeholder .'">'. $defaultValue .'</textarea>'. (!empty($tips) ? '<p class="description" id="tagline-description">'. $tips .'</p>' : '') . '</td>
         </tr>';
 						break;
 				}

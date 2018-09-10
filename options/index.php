@@ -45,6 +45,7 @@ function bmqynext_settings() {
         <h2 class="nav-tab-wrapper wp-clearfix">
             <a href="<?php echo admin_url( 'themes.php?page=bmqynext_settings' ); ?>" class="nav-tab <?php if($options === 'base') echo " nav-tab-active"?>"><?php esc_html_e('Base Settings', 'bmqynext') ?></a>
             <a href="<?php echo esc_url( add_query_arg( array( 'options' => 'author' ), admin_url( 'themes.php?page=bmqynext_settings' ) ) ); ?>" class="nav-tab <?php if($options === 'author') echo " nav-tab-active"?>"><?php esc_html_e('Author Settings', 'bmqynext') ?></a>
+            <a href="<?php echo esc_url( add_query_arg( array( 'options' => 'shop' ), admin_url( 'themes.php?page=bmqynext_settings' ) ) ); ?>" class="nav-tab <?php if($options === 'shop') echo " nav-tab-active"?>"><?php esc_html_e('Shop Settings', 'bmqynext') ?></a>
             <a href="<?php echo esc_url( add_query_arg( array( 'options' => 'ad' ), admin_url( 'themes.php?page=bmqynext_settings' ) ) ); ?>" class="nav-tab <?php if($options === 'ad') echo " nav-tab-active"?>"><?php esc_html_e('AD Settings', 'bmqynext') ?></a>
             <a href="<?php echo esc_url( add_query_arg( array( 'options' => 'analytics' ), admin_url( 'themes.php?page=bmqynext_settings' ) ) ); ?>" class="nav-tab <?php if($options === 'analytics') echo " nav-tab-active"?>"><?php esc_html_e('Statistics and analysis', 'bmqynext') ?></a>
             <a href="<?php echo esc_url( add_query_arg( array( 'options' => 'other' ), admin_url( 'themes.php?page=bmqynext_settings' ) ) ); ?>" class="nav-tab <?php if($options === 'other') echo " nav-tab-active"?>"><?php esc_html_e('Other Settings', 'bmqynext') ?></a>
@@ -57,6 +58,9 @@ function bmqynext_settings() {
                     break;
                 case 'author':
 	                include_once('author.php');
+                    break;
+                case 'shop':
+	                include_once( 'shop.php' );
                     break;
                 case 'ad':
 	                include_once('ad.php');

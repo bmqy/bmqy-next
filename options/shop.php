@@ -9,21 +9,31 @@
 
 $formName = wp_get_theme()->get('TextDomain'). '_options';
 $baseItem = [
-	'show_copyright'=>[
+	'show_shop'=>[
 		'type'=> 'switch',
-		'label'=> 'Copyright Display',
+		'label'=> 'Shop Display',
 		'defaultValue'=> 1,
 	],
-	'copyright_apply_category'=>[
-		'type'=> 'checkbox',
-		'label'=> 'Copyright Apply Category',
+	'shop_title'=>[
+		'type'=> 'input',
+		'label'=> 'Shop Title',
 		'values'=> bmqynext_getCategorysArray(),
 	],
-	'copyright_template'=>[
+	'shop_icon'=>[
+		'type'=> 'input',
+		'label'=> 'Shop Icon',
+		'tips'=> '请填写淘宝店铺二维码图片地址，推荐尺寸：140*140'
+	],
+	'shop_apply_category'=>[
+		'type'=> 'checkbox',
+		'label'=> 'Shop Apply Category',
+		'values'=> bmqynext_getCategorysArray(),
+	],
+	'shop_template'=>[
 		'type'=> 'textarea',
-		'label'=> 'Copyright Content',
+		'label'=> 'Shop Content',
         'size'=> 'large',
-		'tips'=> 'Note: {{ title }} represents the current article title, {{ link }} represents the current article link'
+		'tips'=> '可填加html标签，最终以显示 3 行为宜'
 	]
 ];
 
