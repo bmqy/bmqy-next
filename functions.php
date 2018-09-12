@@ -1198,7 +1198,7 @@ if(!function_exists('bmqynext_generate_form')){
 					case 'textarea':
 						$html .= '<tr>
             <th scope="row"><label for="'. $field .'">'. $label .'</label></th>
-            <td><textarea name="'. $field .'" id="'. $field .'" rows="5" cols="30" class="'. $size .'-text" placeholder="'. $placeholder .'">'. $defaultValue .'</textarea>'. (!empty($tips) ? '<p class="description" id="tagline-description">'. $tips .'</p>' : '') . '</td>
+            <td><textarea name="'. $field .'" id="'. $field .'" rows="5" cols="30" class="'. $size .'-text" placeholder="'. $placeholder .'">'. stripslashes($defaultValue) .'</textarea>'. (!empty($tips) ? '<p class="description" id="tagline-description">'. $tips .'</p>' : '') . '</td>
         </tr>';
 						break;
 				}

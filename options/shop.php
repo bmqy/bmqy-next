@@ -22,7 +22,7 @@ $baseItem = [
 	'shop_icon'=>[
 		'type'=> 'input',
 		'label'=> 'Shop Icon',
-		'tips'=> '请填写淘宝店铺二维码图片地址，推荐尺寸：140*140'
+		'tips'=> 'Shop icon, recommended size: 140*140'
 	],
 	'shop_apply_category'=>[
 		'type'=> 'checkbox',
@@ -33,7 +33,7 @@ $baseItem = [
 		'type'=> 'textarea',
 		'label'=> 'Shop Content',
         'size'=> 'large',
-		'tips'=> '可填加html标签，最终以显示 3 行为宜'
+		'tips'=> 'Support html tags, preferably display 3 lines'
 	]
 ];
 
@@ -45,15 +45,20 @@ if ( isset( $_POST[ $formName ] ) ) {
 
 	foreach ($baseItem as $item=> $val){
 		$field = !in_array($item, $siteFiled) ? $formName .'_'. $item : $item;
-		if($baseItem[$item]['type']==='switch'){
-			$value = !empty($_POST[$field]) ? $_POST[$field] : 0;
-		}
-		else{
-			$value = $_POST[$field];
-		}
+		if(!empty($_POST[$field])){
+			if($baseItem[$item]['type']==='switch'){
+				$value = !empty($_POST[$field]) ? $_POST[$field] : 0;
+			}
+			else{
+				if($baseItem[$item]['type']==='textarea'){
+					$value = esc_html($_POST[$field]);
+				}else{
+					$value = $_POST[$field];
+				}
+			}
 
-		update_option($field, $value);
-
+			update_option($field, $value);
+		}
 	}
 
 	bmqynext_show_udpate_success();
