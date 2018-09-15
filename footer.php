@@ -11,7 +11,23 @@
 ?>
     <footer id="footer" class="footer">
         <div class="footer-inner">
-            <div class="copyright">© <?php echo !empty(get_option('bmqynext_options_since')) ? get_option('bmqynext_options_since') : '2014' ?> - <span itemprop="copyrightYear"><?php the_time("Y") ?></span> <span class="with-love"><i class="fa fa-heart"></i> </span><span class="author" itemprop="copyrightHolder">北门清燕</span>
+            <div class="copyright">© <?php echo !empty(get_option('bmqynext_options_since')) ? get_option('bmqynext_options_since') : '2014' ?> - <span itemprop="copyrightYear"><?php the_time("Y") ?></span> <span class="with-love"><i class="fa fa-heart"></i> </span><span class="author" itemprop="copyrightHolder"><?php bloginfo("name") ?></span>
+            </div>
+
+            <?php if(get_option("bmqynext_options_powered")==="1"):?>
+            <div class="powered-by">
+                <?php printf( __( 'Powered by %s', 'bmqynext' ), '<a href="'. esc_url( __( 'https://wordpress.org/', 'bmqynext' ) ) .'">WordPress</a>' ); ?>
+            </div>
+
+            <div class="theme-info">
+                <?php _e("Themes") ?> -
+                <a class="theme-link" href="https://github.com/bmqy/bmqy-next">
+                    bmqy-next
+                </a>
+            </div>
+            <?php endif; ?>
+            <div style="display: none;">
+                熊掌号：https://author.baidu.com/home/1545776927809018?from=bmqy
             </div>
         </div>
     </footer>

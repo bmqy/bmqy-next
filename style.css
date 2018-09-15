@@ -1587,27 +1587,27 @@ pre .javascript .function, pre .keyword {
 }
 
 .post-nav-item .fa {
+    right: 0;
+    left: auto
+}
+
+.post-nav-next a {
+    padding-right: 15px
+}
+
+.post-nav-next {
+    text-align: right;
+}
+
+.post-nav-prev a {
+    padding-left: 15px
+}
+
+.post-nav-item .fa {
     position: absolute;
     top: 8px;
     left: 0;
     font-size: 12px
-}
-
-.post-nav-next a {
-    padding-left: 15px
-}
-
-.post-nav-prev {
-    text-align: right
-}
-
-.post-nav-prev a {
-    padding-right: 15px
-}
-
-.post-nav-prev .fa {
-    right: 0;
-    left: auto
 }
 
 .posts-expand .post-eof {

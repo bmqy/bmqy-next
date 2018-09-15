@@ -20,7 +20,7 @@
 	<?php if ( 'post' === get_post_type() ) : ?>
 
 		<footer class="entry-footer">
-			<?php bmqynext_entry_meta(); ?>
+			<?php bmqynext_post_meta(); ?>
 			<?php
 				edit_post_link(
 					sprintf(

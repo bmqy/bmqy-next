@@ -61,20 +61,18 @@ if ( isset( $_POST[ $formName ] ) ) {
 
 	foreach ($baseItem as $item=> $val){
 		$field = !in_array($item, $siteFiled) ? $formName .'_'. $item : $item;
-		if(!empty($_POST[$field])){
-			if($baseItem[$item]['type']==='switch'){
-				$value = !empty($_POST[$field]) ? $_POST[$field] : 0;
-			}
-			else{
-				if($baseItem[$item]['type']==='textarea'){
-					$value = esc_html($_POST[$field]);
-				}else{
-					$value = $_POST[$field];
-				}
-			}
-
-			update_option($field, $value);
+		if($baseItem[$item]['type']==='checkbox'){
+			$value = !empty($_POST[$field]) ? $_POST[$field] : 0;
 		}
+		else{
+			if($baseItem[$item]['type']==='textarea'){
+				$value = !empty(esc_html($_POST[$field])) ? esc_html($_POST[$field]) : "";
+			}else{
+				$value = !empty($_POST[$field]) ? $_POST[$field] : "";
+			}
+		}
+
+		update_option($field, $value);
 	}
 
 	bmqynext_show_udpate_success();

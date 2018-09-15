@@ -29,11 +29,11 @@ if(! function_exists('bmqynext_get_options_description')){
     }
 }
 
-if ( ! function_exists( 'bmqynext_entry_meta' ) ) :
+if ( ! function_exists( 'bmqynext_post_meta' ) ) :
 /**
  * 输出文章发布信息
  */
-function bmqynext_entry_meta() {
+function bmqynext_post_meta() {
     //不显示作者名
 /*	if ( 'post' === get_post_type() ) {
 		$author_avatar_size = apply_filters( 'bmqynext_author_avatar_size', 15 );
@@ -64,7 +64,7 @@ function bmqynext_entry_meta() {
 		bmqynext_entry_taxonomies();
 	}
 
-	if ( ! is_singular() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+	if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 		printf( "<span class=\"post-comments-count\">" );
 		printf( "<span class=\"post-meta-divider\">|</span>" );
 		echo '<span class="post-meta-item-icon"><i class="fa fa-comment-o"></i> </span>';
@@ -344,4 +344,76 @@ if(!function_exists('bmqynext_get_targs_count')){
 	    return wp_count_terms('post_tag');
         //return wp_tag_cloud();
     }
+}
+
+/*
+ * 获取上一篇/下一篇
+ * */
+
+function bmqynext_navigation_markup( $links, $class = 'posts-navigation', $screen_reader_text = '' ) {
+	if ( empty( $screen_reader_text ) ) {
+		$screen_reader_text = __( 'Posts navigation' );
+	}
+
+	$template = '
+	<div class="post-nav %1$s" role="navigation">
+		%3$s
+	</div>';
+
+	/**
+	 * Filters the navigation markup template.
+	 *
+	 * Note: The filtered template HTML must contain specifiers for the navigation
+	 * class (%1$s), the screen-reader-text value (%2$s), and placement of the
+	 * navigation links (%3$s):
+	 *
+	 *     <nav class="navigation %1$s" role="navigation">
+	 *         <h2 class="screen-reader-text">%2$s</h2>
+	 *         <div class="nav-links">%3$s</div>
+	 *     </nav>
+	 *
+	 * @since 4.4.0
+	 *
+	 * @param string $template The default template.
+	 * @param string $class    The class passed by the calling function.
+	 * @return string Navigation template.
+	 */
+	$template = apply_filters( 'navigation_markup_template', $template, $class );
+
+	return sprintf( $template, sanitize_html_class( $class ), esc_html( $screen_reader_text ), $links );
+}
+function bmqynext_get_the_post_navigation( $args = array() ) {
+	$args = wp_parse_args( $args, array(
+		'prev_text'          => '%title',
+		'next_text'          => '%title',
+		'in_same_term'       => false,
+		'excluded_terms'     => '',
+		'taxonomy'           => 'category',
+		'screen_reader_text' => __( 'Post navigation' ),
+	) );
+
+	$navigation = '';
+
+	$previous = get_previous_post_link(
+		'<div class="post-nav-prev post-nav-item">%link</div>',
+		$args['prev_text'],
+		$args['in_same_term'],
+		$args['excluded_terms'],
+		$args['taxonomy']
+	);
+
+	$next = get_next_post_link(
+		'<div class="post-nav-next post-nav-item">%link</div>',
+		$args['next_text'],
+		$args['in_same_term'],
+		$args['excluded_terms'],
+		$args['taxonomy']
+	);
+
+	// Only add markup if there's somewhere to navigate to.
+	if ( $previous || $next ) {
+		$navigation = bmqynext_navigation_markup( $previous . $next, 'post-navigation', $args['screen_reader_text'] );
+	}
+
+	echo $navigation;
 }

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Sixteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-09-10 17:08+0800\n"
+"PO-Revision-Date: 2018-09-14 17:13+0800\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -302,9 +302,14 @@ msgstr "社交网络链接菜单"
 msgid "Primary Menu"
 msgstr "主菜单"
 
-#: footer.php:61
-msgid "Proudly powered by %s"
-msgstr "自豪地采用%s"
+msgid "Powered"
+msgstr "技术支持"
+
+msgid "Powered by %s"
+msgstr "由 %s 强力驱动"
+
+msgid "Footer 'powered-by' and 'theme-info' copyright."
+msgstr "页脚“支持”和“主题”信息"
 
 #: comments.php:71
 msgid "Comments are closed."
@@ -423,9 +428,17 @@ msgstr "显示版权"
 msgid "Copyright Apply Category"
 msgstr "版权适用分类"
 
-#. copyright Content
-msgid "Copyright Content"
-msgstr "版权内容"
+msgid "Post author:"
+msgstr "本文作者："
+
+msgid "Post link:"
+msgstr "本文链接："
+
+msgid "Copyright Notice:"
+msgstr "版权声明："
+
+msgid "All articles in this blog are licensed under <a href='https://creativecommons.org/licenses/by-nc-sa/3.0/' rel='external nofollow' target='_blank'>CC BY-NC-SA 3.0</a> unless stating additionally."
+msgstr "本博客所有文章除特别声明外，均采用 <a href='https://creativecommons.org/licenses/by-nc-sa/3.0/' rel='external nofollow' target='_blank'>CC BY-NC-SA 3.0</a> 许可协议。"
 
 #. copyright content tips
 msgid "Note: {{ title }} represents the current article title, {{ link }} represents the current article link"

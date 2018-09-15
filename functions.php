@@ -1022,6 +1022,45 @@ if(!function_exists("bmqynext_wp_social_menu")){
 }
 
 /*
+ * 获取标签列表
+ * */
+function bmqynext_get_the_tag_list( $id=0, $before = '', $after = '' ) {
+	$taxonomy = 'post_tag';
+	$sep = '';
+	$terms = get_the_terms( $id, $taxonomy );
+
+	if ( is_wp_error( $terms ) )
+		return $terms;
+
+	if ( empty( $terms ) )
+		return false;
+
+	$links = array();
+
+	foreach ( $terms as $term ) {
+		$link = get_term_link( $term, $taxonomy );
+		if ( is_wp_error( $link ) ) {
+			return $link;
+		}
+		$links[] = '<a href="' . esc_url( $link ) . '" rel="tag">'. $before . $term->name . $after . '</a>';
+	}
+
+	/**
+	 * Filters the term links for a given taxonomy.
+	 *
+	 * The dynamic portion of the filter name, `$taxonomy`, refers
+	 * to the taxonomy slug.
+	 *
+	 * @since 2.5.0
+	 *
+	 * @param array $links An array of term links.
+	 */
+	$term_links = apply_filters( "term_links-{$taxonomy}", $links );
+
+	return join( $sep, $term_links );
+}
+
+/*
  * 压缩html代码
  * */
 if(get_option('bmqynext_opt_html_compress')==='1'){

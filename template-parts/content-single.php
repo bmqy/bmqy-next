@@ -8,46 +8,85 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
+<div id="posts" class="posts-expand">
+    <article id="post-<?php the_ID(); ?>" <?php post_class('post post-type-normal'); ?>>
+        <header class="post-header">
+            <?php the_title( '<h1 class="post-title">', '</h1>' ); ?>
+        </header><!-- .entry-header -->
 
-	<?php bmqynext_excerpt(); ?>
+        <div class="post-meta">
+		    <?php bmqynext_post_meta(); ?>
+		    <?php
+		    edit_post_link(
+			    sprintf(
+			    /* translators: %s: Name of current post */
+				    __( 'Edit<span class="screen-reader-text"> "%s"</span>', 'bmqynext' ),
+				    get_the_title()
+			    ),
+			    '<span class="edit-link">',
+			    '</span>'
+		    );
+		    ?>
+        </div><!-- .entry-footer -->
 
-	<?php bmqynext_post_thumbnail(); ?>
+        <?php bmqynext_excerpt(); ?>
 
-	<div class="entry-content">
-		<?php
-			the_content();
+        <?php bmqynext_post_thumbnail(); ?>
 
-			wp_link_pages( array(
-				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'bmqynext' ) . '</span>',
-				'after'       => '</div>',
-				'link_before' => '<span>',
-				'link_after'  => '</span>',
-				'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'bmqynext' ) . ' </span>%',
-				'separator'   => '<span class="screen-reader-text">, </span>',
-			) );
+        <div class="post-body" itemprop="articleBody">
+            <?php
+                the_content();
 
-			if ( '' !== get_the_author_meta( 'description' ) ) {
-				get_template_part( 'template-parts/biography' );
-			}
-		?>
-	</div><!-- .entry-content -->
+                wp_link_pages( array(
+                    'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'bmqynext' ) . '</span>',
+                    'after'       => '</div>',
+                    'link_before' => '<span>',
+                    'link_after'  => '</span>',
+                    'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'bmqynext' ) . ' </span>%',
+                    'separator'   => '<span class="screen-reader-text">, </span>',
+                ) );
 
-	<footer class="entry-footer">
-		<?php bmqynext_entry_meta(); ?>
-		<?php
-			edit_post_link(
-				sprintf(
-					/* translators: %s: Name of current post */
-					__( 'Edit<span class="screen-reader-text"> "%s"</span>', 'bmqynext' ),
-					get_the_title()
-				),
-				'<span class="edit-link">',
-				'</span>'
-			);
-		?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-## -->
+                if ( '' !== get_the_author_meta( 'description' ) ) {
+                    get_template_part( 'template-parts/biography' );
+                }
+            ?>
+        </div><!-- .entry-content -->
+        <?php if(get_option("bmqynext_options_show_copyright")==="1"): ?>
+        <div>
+            <ul class="post-copyright">
+                <li class="post-copyright-author">
+                    <strong><?php _e('Post author:', 'bmqynext') ?></strong>
+                    <?php bloginfo('name') ?>
+                </li>
+                <li class="post-copyright-link">
+                    <strong><?php _e('Post link:', 'bmqynext') ?></strong>
+                    <a href="<?php echo get_posts_nav_link() ?>" title="<?php echo the_title() ?>"><?php echo get_posts_nav_link() ?></a>
+                </li>
+                <li class="post-copyright-license">
+                    <strong><?php _e('Copyright Notice:', 'bmqynext') ?></strong>
+                    <?php _e("All articles in this blog are licensed under <a href='https://creativecommons.org/licenses/by-nc-sa/3.0/' rel='external nofollow' target='_blank'>CC BY-NC-SA 3.0</a> unless stating additionally.", 'bmqynext') ?>
+                </li>
+            </ul>
+        </div>
+        <?php endif; ?>
+        <footer class="post-footer">
+            <div class="post-tags">
+                <?php echo $tags_list = bmqynext_get_the_tag_list( '', '# '); ?>
+            </div><!-- .post-tags -->
+            <?php
+            if ( is_singular( 'attachment' ) ) {
+                // Parent post navigation.
+                bmqynext_get_the_post_navigation( array(
+                    'prev_text' => _x( '<span class="meta-nav">Published in</span><span class="post-title">%title</span>', 'Parent post link', 'bmqynext' ),
+                ) );
+            } elseif ( is_singular( 'post' ) ) {
+                // Previous/next post navigation.
+                bmqynext_get_the_post_navigation( array(
+                    'next_text' => '%title <i class="fa fa-chevron-right"></i>',
+                    'prev_text' => '<i class="fa fa-chevron-left"></i> %title',
+                ) );
+            }
+            ?><!-- .post-nav -->
+        </footer>
+    </article><!-- #post-## -->
+</div>

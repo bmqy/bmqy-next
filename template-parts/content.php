@@ -17,7 +17,7 @@
 		<?php the_title( sprintf( '<h1 class="post-title"><a class="post-title-link" href="%s" itemprop="url" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
 
         <div class="post-meta">
-			<?php bmqynext_entry_meta(); ?>
+			<?php bmqynext_post_meta(); ?>
 			<?php
 			bmqynext_edit_post_link(
 				sprintf(
