@@ -60,7 +60,8 @@
                 </li>
                 <li class="post-copyright-link">
                     <strong><?php _e('Post link:', 'bmqynext') ?></strong>
-                    <a href="<?php echo get_posts_nav_link() ?>" title="<?php echo the_title() ?>"><?php echo get_posts_nav_link() ?></a>
+	                <?php echo get_posts_nav_link() ?>
+                    <a href="<?php echo get_permalink() ?>" title="<?php echo the_title() ?>"><?php echo get_permalink() ?></a>
                 </li>
                 <li class="post-copyright-license">
                     <strong><?php _e('Copyright Notice:', 'bmqynext') ?></strong>
@@ -89,4 +90,14 @@
             ?><!-- .post-nav -->
         </footer>
     </article><!-- #post-## -->
+
+    <div class="post-spread">
+        <?php if(get_option('bmqynext_options_share_baidu')!==''): ?>
+	        <?php get_template_part( "template-parts/share/baidushare", "bmqynext-baidu_share" );?>
+        <?php elseif(get_option('bmqynext_options_share_jiathis')!==''): ?>
+	        <?php get_template_part( "template-parts/share/jiathis", "bmqynext-jiathis_share" );?>
+        <?php elseif(get_option('bmqynext_options_share_addthis')!==''): ?>
+	        <?php get_template_part( "template-parts/share/add-this", "bmqynext-add-this_share" );?>
+	    <?php endif; ?>
+    </div>
 </div>
