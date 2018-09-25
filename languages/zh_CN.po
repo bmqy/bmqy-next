@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Sixteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-09-18 13:44+0800\n"
+"PO-Revision-Date: 2018-09-25 13:18+0800\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -54,7 +54,7 @@ msgstr "红"
 #: comments.php:31
 msgctxt "comments title"
 msgid "One thought on &ldquo;%s&rdquo;"
-msgstr "《%s》有一个想法"
+msgstr "《%s》有一条评论"
 
 #: searchform.php:16
 msgctxt "submit button"
@@ -320,7 +320,7 @@ msgstr "评论已关闭。"
 msgctxt "comments title"
 msgid "%1$s thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
-msgstr[0] "《%2$s》有%1$s个想法"
+msgstr[0] "《%2$s》有%1$s条评论"
 
 #: archive.php:53 image.php:62 index.php:50 search.php:41
 #: template-parts/content-page.php:28 template-parts/content-single.php:30

@@ -16,19 +16,25 @@
 
             <?php if(get_option("bmqynext_options_powered")==="1"):?>
             <div class="powered-by">
-                <?php printf( __( 'Powered by %s', 'bmqynext' ), '<a href="'. esc_url( __( 'https://wordpress.org/', 'bmqynext' ) ) .'">WordPress</a>' ); ?>
+                <?php printf( __( 'Powered by %s', 'bmqynext' ), '<a target="_blank" href="'. esc_url( __( 'https://wordpress.org/', 'bmqynext' ) ) .'">WordPress</a>' ); ?>
             </div>
 
             <div class="theme-info">
-                <?php _e("Themes") ?> -
-                <a class="theme-link" href="https://github.com/bmqy/bmqy-next">
+                www.bmqy.net
+            </div>
+            <?php endif; ?>
+
+            <?php if(false):?>
+            <div class="theme-info">
+		        <?php _e("Themes") ?> -
+                <a class="theme-link" target="_blank" href="https://github.com/bmqy/bmqy-next">
                     bmqy-next
                 </a>
             </div>
-            <?php endif; ?>
             <div style="display: none;">
                 熊掌号：https://author.baidu.com/home/1545776927809018?from=bmqy
             </div>
+            <?php endif; ?>
         </div>
     </footer>
     <div class="back-to-top"><i class="fa fa-arrow-up"></i></div>
