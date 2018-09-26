@@ -3227,6 +3227,12 @@ embed {
     height: 70px;
 }
 
+.comment-form input[type=text],
+.comment-form input[type=email],
+.comment-form input[type=url]{
+    width: 60%;
+}
+
 .form-submit {
     margin-bottom: 0;
 }

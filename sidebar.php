@@ -8,7 +8,7 @@
  */
 ?>
 
-<?php if ( is_active_sidebar( 'sidebar-1' )  ) : ?>
+<?php if(true)://if ( is_active_sidebar( 'sidebar-1' )  ) : ?>
     <div class="sidebar-toggle">
         <div class="sidebar-toggle-line-wrap">
             <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
