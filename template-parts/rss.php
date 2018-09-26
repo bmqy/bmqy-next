@@ -8,7 +8,7 @@
  */
 ?>
 
-<?php if(get_option('bmqynext_options_rss')!==0): ?>
+<?php if(!empty(get_option('bmqynext_options_rss')) && get_option('bmqynext_options_rss')!=="0"): ?>
 <div class="feed-link motion-element">
     <a href="<?php bloginfo(!empty(get_option('bmqynext_options_rss'))?get_option('bmqynext_options_rss'):'rss2_url'); ?>" target="_blank" rel="alternate">
         <i class="fa fa-rss"></i>
