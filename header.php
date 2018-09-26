@@ -116,7 +116,7 @@
             </div>
 
             <?php if ( is_user_logged_in() ) : ?>
-            <div class="site-nav" style="top: 104px;">
+            <nav class="site-nav" style="top: 104px;">
             <?php else: ?>
             <nav class="site-nav">
             <?php endif; ?>
@@ -162,7 +162,7 @@
                     </div>
 	            <?php endif; ?>
             </nav>
-        </div>
+        </nav>
     </header>
 
     <main id="main" class="main">

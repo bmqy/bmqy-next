@@ -586,7 +586,7 @@ if(!function_exists("bmqynext_wp_nav_menu")){
 		static $menu_id_slugs = array();
 
 		$defaults = array( 'menu' => '', 'container' => 'div', 'container_class' => '', 'container_id' => '', 'menu_class' => 'menu', 'menu_id' => '',
-		                   'echo' => true, 'fallback_cb' => 'wp_page_menu', 'before' => '', 'after' => '', 'link_before' => '', 'link_after' => '', 'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>', 'item_spacing' => 'preserve',
+		                   'echo' => true, 'fallback_cb' => 'wp_page_menu', 'before' => '', 'after' => '', 'link_before' => '', 'link_after' => '', 'items_wrap' => '%3$s', 'item_spacing' => 'preserve',
 		                   'depth' => 0, 'walker' => '', 'theme_location' => '' );
 
 		$args = wp_parse_args( $args, $defaults );
@@ -771,11 +771,11 @@ if(!function_exists("bmqynext_wp_nav_menu")){
 		if ( empty( $items ) )
 			return false;
 
-		$items .= '<li id="menu-item-search" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-search">'
+/*		$items .= '<li id="menu-item-search" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-search">'
 		             .'<a href="javascript:;" class="popup-trigger">'
 		             .'<i class="menu-item-icon fa fa-search fa-fw"></i> <br />'. __("Search")
 		             .'</a>'
-		             .'</li>';
+		             .'</li>';*/
 		$nav_menu .= sprintf( $args->items_wrap, esc_attr( $wrap_id ), esc_attr( $wrap_class ), $items );
 		unset( $items );
 
