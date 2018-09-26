@@ -9,9 +9,9 @@
 $page = isset($_REQUEST["page"]) ? $_REQUEST["page"] : "bmqynext_settings";
 $options = isset($_REQUEST["options"]) ? $_REQUEST["options"] : "base";
 
-if($page !== "bmqynext_settings"){
+/*if($page !== "bmqynext_settings"){
 	wp_die( __( "Sorry, you are not allowed to access this page." ) );
-}
+}*/
 
 
 /** 注册主题选项菜单 */

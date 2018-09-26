@@ -1063,7 +1063,7 @@ function bmqynext_get_the_tag_list( $id=0, $before = '', $after = '' ) {
 /*
  * 压缩html代码
  * */
-if(get_option('bmqynext_opt_html_compress')==='1'){
+if(get_option('bmqynext_options_html_compress')==='1'){
 	if(!function_exists('wp_compress_html')){
 		function wp_compress_html(){
 			function wp_compress_html_main ($buffer){
