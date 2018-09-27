@@ -1306,7 +1306,7 @@ pre .javascript .function, pre .keyword {
 
 .posts-collapse .collection-title {
     position: relative;
-    margin: 60px 0
+    padding: 60px 0
 }
 
 .posts-collapse .collection-title h1, .posts-collapse .collection-title h2 {
@@ -1332,7 +1332,7 @@ pre .javascript .function, pre .keyword {
 }
 
 .posts-collapse .post {
-    margin: 30px 0
+    margin: 0 0 30px;
 }
 
 .posts-collapse .post-header {

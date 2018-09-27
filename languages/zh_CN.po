@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Sixteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-09-25 13:18+0800\n"
+"PO-Revision-Date: 2018-09-27 13:21+0800\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -356,6 +356,41 @@ msgstr "WordPress团队"
 #: footer.php:60
 msgid "https://wordpress.org/"
 msgstr "https://cn.wordpress.org/"
+
+#. translators: Category archive title. 1: Category name
+#: wp-includes/general-template.php:1468
+msgid "%s <small>Category</small>"
+msgstr "%s <small>分类</small>"
+
+#. translators: Tag archive title. 1: Tag name
+#: wp-includes/general-template.php:1471
+msgid "%s <small>Tag</small>"
+msgstr "%s <small>标签</small>"
+
+#. translators: Author archive title. 1: Author name
+#: wp-includes/general-template.php:1474
+msgid "%s <small>Author</small>"
+msgstr "%s <small>作者</small>"
+
+#. translators: Yearly archive title. 1: Year
+#: wp-includes/general-template.php:1477
+msgid "%s <small>Year</small>"
+msgstr "%s <small>年份</small>"
+
+#. translators: Daily archive title. 1: Date
+#: wp-includes/general-template.php:1483
+msgid "%s <small>Day</small>"
+msgstr "%s <small>日期</small>"
+
+#. translators: Monthly archive title. 1: Month name and year
+#: wp-includes/general-template.php:1480
+msgid "%s <small>Month</small>"
+msgstr "%s <small>月份</small>"
+
+#. translators: Post type archive title. 1: Post type name
+#: wp-includes/general-template.php:1506
+msgid "%s <small>Archives</small>"
+msgstr "%s <small>存档</small>"
 
 #. Author tips
 msgid "Note: original article, reprint, please indicate from <a href=\"%1$s\" title=\"%2$s\" >\"%2$s\"</a>, thank you!"
