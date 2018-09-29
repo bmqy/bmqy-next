@@ -771,11 +771,15 @@ if(!function_exists("bmqynext_wp_nav_menu")){
 		if ( empty( $items ) )
 			return false;
 
-/*		$items .= '<li id="menu-item-search" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-search">'
-		             .'<a href="javascript:;" class="popup-trigger">'
-		             .'<i class="menu-item-icon fa fa-search fa-fw"></i> <br />'. __("Search")
-		             .'</a>'
-		             .'</li>';*/
+		if(get_option('bmqynext_options_nav_search')==='1'){
+			$items .= '<li id="menu-item-search" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-search">'
+			          .'<a href="javascript:;" class="popup-trigger">';
+			          if(get_option('bmqynext_options_nav_icon')==='1'){
+				          $items .= '<i class="menu-item-icon fa fa-search fa-fw"></i> <br />';
+			          }
+			$items .=  __("Search") .'</a>'
+			          .'</li>';
+		}
 		$nav_menu .= sprintf( $args->items_wrap, esc_attr( $wrap_id ), esc_attr( $wrap_class ), $items );
 		unset( $items );
 

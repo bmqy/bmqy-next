@@ -20,6 +20,10 @@ if ( post_password_required() ) {
 }
 ?>
 
+<?php if(get_option('bmqynext_options_changyan_enabled')==='1' && !empty(get_option('bmqynext_options_changyan_appid')) && !empty(get_option('bmqynext_options_changyan_appkey'))): ?>
+<div id="SOHUCS"></div>
+<?php elseif(get_option('bmqynext_options_disqus_enabled')==='1' && !empty(get_option('bmqynext_options_disqus_shortname'))): ?>
+<?php else: ?>
 <div id="comments" class="comments-area">
 
 	<?php if ( have_comments() ) : ?>
@@ -77,3 +81,4 @@ if ( post_password_required() ) {
 	?>
 
 </div><!-- .comments-area -->
+<?php endif; ?>

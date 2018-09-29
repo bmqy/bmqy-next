@@ -49,8 +49,7 @@ if(get_option('bmqynext_options_show_eevee')==='1') {
 ?>
 
 <script type="text/javascript">"[object Function]" !== Object.prototype.toString.call(window.Promise) && (window.Promise = null)</script>
-<script id="cy_cmt_num"
-        src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cysKX3oNx"></script>
+<?php get_template_part( "template-parts/comments/index", "bmqynext-comments" );?>
 <script type="text/javascript">function proceedsearch() {
         $("body").append('<div class="search-popup-overlay local-search-pop-overlay"></div>').css("overflow", "hidden"), $(".search-popup-overlay").click(onPopupClose), $(".popup").toggle();
         var t = $("#local-search-input");
@@ -157,73 +156,7 @@ if(get_option('bmqynext_options_show_eevee')==='1') {
     }), $(document).on("keyup", function (t) {
         var e = 27 === t.which && $(".search-popup").is(":visible");
         e && onPopupClose()
-    })</script>
-<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-<script>AV.initialize("GJMIqaJ14aV7dSKNMtYxx5BU-gzGzoHsz", "Dbwphj6QwwaNqdgCFIlXlYpH")</script>
-<script>function showTime(e) {
-        var t = new AV.Query(e), n = [], o = $(".leancloud_visitors");
-        o.each(function () {
-            n.push($(this).attr("id").trim())
-        }), t.containedIn("url", n), t.find().done(function (e) {
-            var t = ".leancloud-visitors-count";
-            if (0 === e.length) return void o.find(t).text(0);
-            for (var i = 0; i < e.length; i++) {
-                var r = e[i], s = r.get("url"), l = r.get("time"), c = document.getElementById(s);
-                $(c).find(t).text(l)
-            }
-            for (var i = 0; i < n.length; i++) {
-                var s = n[i], c = document.getElementById(s), u = $(c).find(t);
-                "" == u.text() && u.text(0)
-            }
-        }).fail(function (e, t) {
-            console.log("Error: " + t.code + " " + t.message)
-        })
-    }
-
-    function addCount(e) {
-        var t = $(".leancloud_visitors"), n = t.attr("id").trim(), o = t.attr("data-flag-title").trim(),
-            i = new AV.Query(e);
-        i.equalTo("url", n), i.find({
-            success: function (t) {
-                if (t.length > 0) {
-                    var i = t[0];
-                    i.fetchWhenSave(!0), i.increment("time"), i.save(null, {
-                        success: function (e) {
-                            var t = $(document.getElementById(n));
-                            t.find(".leancloud-visitors-count").text(e.get("time"))
-                        }, error: function (e, t) {
-                            console.log("Failed to save Visitor num, with error message: " + t.message)
-                        }
-                    })
-                } else {
-                    var r = new e, s = new AV.ACL;
-                    s.setPublicReadAccess(!0), s.setPublicWriteAccess(!0), r.setACL(s), r.set("title", o), r.set("url", n), r.set("time", 1), r.save(null, {
-                        success: function (e) {
-                            var t = $(document.getElementById(n));
-                            t.find(".leancloud-visitors-count").text(e.get("time"))
-                        }, error: function (e, t) {
-                            console.log("Failed to create")
-                        }
-                    })
-                }
-            }, error: function (e) {
-                console.log("Error:" + e.code + " " + e.message)
-            }
-        })
-    }
-
-    $(function () {
-        var e = AV.Object.extend("Counter");
-        1 == $(".leancloud_visitors").length ? addCount(e) : $(".post-title-link").length > 1 && showTime(e)
     })
 </script>
-<!--<script>
-    !function () {
-        var t = document.createElement("script"), s = window.location.protocol.split(":")[0];
-        "https" === s ? t.src = "https://zz.bdstatic.com/linksubmit/push.js" : t.src = "http://push.zhanzhang.baidu.com/push.js";
-        var e = document.getElementsByTagName("script")[0];
-        e.parentNode.insertBefore(t, e)
-    }()
-</script>-->
 </body>
 </html>

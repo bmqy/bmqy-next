@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Sixteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-09-27 13:21+0800\n"
+"PO-Revision-Date: 2018-09-29 17:01+0800\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -55,11 +55,6 @@ msgstr "红"
 msgctxt "comments title"
 msgid "One thought on &ldquo;%s&rdquo;"
 msgstr "《%s》有一条评论"
-
-#: searchform.php:16
-msgctxt "submit button"
-msgid "Search"
-msgstr "搜索"
 
 #: searchform.php:14
 msgctxt "placeholder"
@@ -408,6 +403,9 @@ msgstr "bmqy-next 主题选项"
 msgid "Base Settings"
 msgstr "基本设置"
 
+msgid "Nav Settings"
+msgstr "导航设置"
+
 msgid "Author Settings"
 msgstr "版权设置"
 
@@ -420,6 +418,9 @@ msgstr "广告设置"
 msgid "Share Settings"
 msgstr "分享设置"
 
+msgid "Comment Settings"
+msgstr "评论设置"
+
 msgid "Statistics and analysis"
 msgstr "统计分析"
 
@@ -429,6 +430,10 @@ msgstr "其它设置"
 #. Site since
 msgid "Site since"
 msgstr "建站时间"
+
+#. unenabled
+msgid "Enabled"
+msgstr "启用"
 
 #. unenabled
 msgid "Unenabled"
@@ -453,6 +458,14 @@ msgstr "这个时间将在站点的底部显示，例如：©2014 - 2018。"
 #. upload logo tips
 msgid "(please upload your logo icon in \"appearance &gt; Custom &gt; site identity\")"
 msgstr "（请在“外观-&gt;自定义-&gt;站点身份”中上传您的logo图标）"
+
+#: searchform.php:16
+msgid "Nav Search"
+msgstr "搜索导航"
+
+#: searchform.php:16
+msgid "(Add search items to the navigation menu)"
+msgstr "（导航菜单中增加搜索项）"
 
 #. nav icon
 msgid "Nav Icon"
@@ -525,6 +538,27 @@ msgstr "Addthis分享"
 #. please fill in pubid, for example: ra-5ba08b500bc8cdfd
 msgid "Please fill in pubid, for example: ra-5ba08b500bc8cdfd"
 msgstr "请填写pubid，例如：ra-5ba08b500bc8cdfd"
+
+msgid "Chang yan"
+msgstr "畅言"
+
+msgid "Chang yan appid"
+msgstr "畅言appid"
+
+msgid "Chang yan appkey"
+msgstr "畅言appkey"
+
+msgid "Disqus"
+msgstr "Disqus"
+
+msgid "Disqus Shortname"
+msgstr "Disqus简称"
+
+msgid "Disqus Count"
+msgstr "Disqus评论数量"
+
+msgid "(Whether the number of comments is displayed)"
+msgstr "（是否显示评论数量）"
 
 #. baidu site verification
 msgid "Baidu site verification"

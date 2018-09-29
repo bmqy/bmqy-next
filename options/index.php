@@ -44,10 +44,12 @@ function bmqynext_settings() {
 		<h2 class="screen-reader-text"><?php echo __( 'Bmqy-next Settings', 'bmqynext' )?></h2>
         <h2 class="nav-tab-wrapper wp-clearfix">
             <a href="<?php echo admin_url( 'themes.php?page=bmqynext_settings' ); ?>" class="nav-tab <?php if($options === 'base') echo " nav-tab-active"?>"><?php esc_html_e('Base Settings', 'bmqynext') ?></a>
+            <a href="<?php echo esc_url( add_query_arg( array( 'options' => 'nav' ), admin_url( 'themes.php?page=bmqynext_settings' ) ) ); ?>" class="nav-tab <?php if($options === 'nav') echo " nav-tab-active"?>"><?php esc_html_e('Nav Settings', 'bmqynext') ?></a>
             <a href="<?php echo esc_url( add_query_arg( array( 'options' => 'author' ), admin_url( 'themes.php?page=bmqynext_settings' ) ) ); ?>" class="nav-tab <?php if($options === 'author') echo " nav-tab-active"?>"><?php esc_html_e('Author Settings', 'bmqynext') ?></a>
             <a href="<?php echo esc_url( add_query_arg( array( 'options' => 'shop' ), admin_url( 'themes.php?page=bmqynext_settings' ) ) ); ?>" class="nav-tab <?php if($options === 'shop') echo " nav-tab-active"?>"><?php esc_html_e('Shop Settings', 'bmqynext') ?></a>
             <a href="<?php echo esc_url( add_query_arg( array( 'options' => 'ad' ), admin_url( 'themes.php?page=bmqynext_settings' ) ) ); ?>" class="nav-tab <?php if($options === 'ad') echo " nav-tab-active"?>"><?php esc_html_e('AD Settings', 'bmqynext') ?></a>
             <a href="<?php echo esc_url( add_query_arg( array( 'options' => 'share' ), admin_url( 'themes.php?page=bmqynext_settings' ) ) ); ?>" class="nav-tab <?php if($options === 'share') echo " nav-tab-active"?>"><?php esc_html_e('Share Settings', 'bmqynext') ?></a>
+            <a href="<?php echo esc_url( add_query_arg( array( 'options' => 'pinglun' ), admin_url( 'themes.php?page=bmqynext_settings' ) ) ); ?>" class="nav-tab <?php if($options === 'pinglun') echo " nav-tab-active"?>"><?php esc_html_e('Comment Settings', 'bmqynext') ?></a>
             <a href="<?php echo esc_url( add_query_arg( array( 'options' => 'analytics' ), admin_url( 'themes.php?page=bmqynext_settings' ) ) ); ?>" class="nav-tab <?php if($options === 'analytics') echo " nav-tab-active"?>"><?php esc_html_e('Statistics and analysis', 'bmqynext') ?></a>
             <a href="<?php echo esc_url( add_query_arg( array( 'options' => 'other' ), admin_url( 'themes.php?page=bmqynext_settings' ) ) ); ?>" class="nav-tab <?php if($options === 'other') echo " nav-tab-active"?>"><?php esc_html_e('Other Settings', 'bmqynext') ?></a>
         </h2>
@@ -56,6 +58,9 @@ function bmqynext_settings() {
             switch ($options){
                 case 'base':
                     include_once('base.php');
+                    break;
+                case 'nav':
+	                include_once('nav.php');
                     break;
                 case 'author':
 	                include_once('author.php');
@@ -68,6 +73,9 @@ function bmqynext_settings() {
                     break;
                 case 'share':
 	                include_once('share.php');
+                    break;
+                case 'pinglun':
+	                include_once( 'pinglun.php' );
                     break;
                 case 'analytics':
 	                include_once('analytics.php');
