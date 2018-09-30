@@ -22,6 +22,7 @@
             <?php get_template_part( 'template-parts/postsinfo', 'postsinfo' ); ?>
             <?php get_template_part( 'template-parts/rss', 'rss' ); ?>
             <?php get_template_part( 'template-parts/social', 'social' ); ?>
+            <?php get_template_part( 'template-parts/friendslink', 'friendslink' ); ?>
             <?php dynamic_sidebar( 'sidebar-1' ); ?>
         </div>
 	</aside><!-- .sidebar .widget-area -->
