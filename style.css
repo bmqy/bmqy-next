@@ -2990,7 +2990,8 @@ embed {
 }
 
 #main {
-    background: url(images/bg.jpg)
+    min-height: 330px;
+    background: url(images/bg.jpg);
 }
 
 .links-of-author a:before {

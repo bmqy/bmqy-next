@@ -12,7 +12,6 @@
  */
 
 get_header(); ?>
-
 <div class="main-inner">
     <div class="content-wrap">
         <div id="content" class="content">

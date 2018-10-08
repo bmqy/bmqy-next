@@ -11,7 +11,7 @@
 ?>
     <footer id="footer" class="footer">
         <div class="footer-inner">
-            <div class="copyright">© <?php echo !empty(get_option('bmqynext_options_since')) ? get_option('bmqynext_options_since') : '2014' ?> - <span itemprop="copyrightYear"><?php the_time("Y") ?></span> <span class="with-love"><i class="fa fa-heart"></i> </span><span class="author" itemprop="copyrightHolder"><?php bloginfo("name") ?></span>
+            <div class="copyright">© <?php echo !empty(get_option('bmqynext_options_since')) ? get_option('bmqynext_options_since') : '2014' ?> - <span itemprop="copyrightYear"><?php echo date("Y") ?></span> <span class="with-love"><i class="fa fa-heart"></i> </span><span class="author" itemprop="copyrightHolder"><?php bloginfo("name") ?></span>
             </div>
 
             <?php if(get_option("bmqynext_options_powered")==="1"):?>
