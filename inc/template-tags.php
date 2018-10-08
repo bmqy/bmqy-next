@@ -555,3 +555,110 @@ function bmqynext_get_search_form( $echo = true ) {
 	else
 		return $result;
 }
+
+function bmqynext_list_friendlinks($args = ''){
+	$defaults = array(
+		'orderby' => 'name', 'order' => 'ASC',
+		'limit' => -1, 'category' => '', 'exclude_category' => '',
+		'category_name' => '', 'hide_invisible' => 1,
+		'show_updated' => 0, 'echo' => 1,
+		'categorize' => 1, 'title_li' => __('Bookmarks'),
+		'title_before' => '<h2>', 'title_after' => '</h2>',
+		'category_orderby' => 'name', 'category_order' => 'ASC',
+		'class' => 'linkcat', 'category_before' => '<li id="%id" class="%class">',
+		'category_after' => '</li>',
+		'before' => '<li class="links-of-blogroll-item">'
+	);
+
+	$r = wp_parse_args( $args, $defaults );
+
+	$output = '';
+
+	if ( ! is_array( $r['class'] ) ) {
+		$r['class'] = explode( ' ', $r['class'] );
+	}
+	$r['class'] = array_map( 'sanitize_html_class', $r['class'] );
+	$r['class'] = trim( join( ' ', $r['class'] ) );
+
+	if ( $r['categorize'] ) {
+		$cats = get_terms( 'link_category', array(
+			'name__like' => $r['category_name'],
+			'include' => $r['category'],
+			'exclude' => $r['exclude_category'],
+			'orderby' => $r['category_orderby'],
+			'order' => $r['category_order'],
+			'hierarchical' => 0
+		) );
+		if ( empty( $cats ) ) {
+			$r['categorize'] = false;
+		}
+	}
+
+	if ( $r['categorize'] ) {
+		// Split the bookmarks into ul's for each category
+		foreach ( (array) $cats as $cat ) {
+			$params = array_merge( $r, array( 'category' => $cat->term_id ) );
+			$bookmarks = get_bookmarks( $params );
+			if ( empty( $bookmarks ) ) {
+				continue;
+			}
+			$output .= str_replace(
+				array( '%id', '%class' ),
+				array( "linkcat-$cat->term_id", $r['class'] ),
+				$r['category_before']
+			);
+			/**
+			 * Filters the bookmarks category name.
+			 *
+			 * @since 2.2.0
+			 *
+			 * @param string $cat_name The category name of bookmarks.
+			 */
+			$catname = apply_filters( 'link_category', $cat->name );
+
+			$output .= $r['title_before'];
+			$output .= $catname;
+			$output .= $r['title_after'];
+			$output .= "\n\t<ul class='links-of-blogroll-list'>\n";
+			$output .= _walk_bookmarks( $bookmarks, $r );
+			$output .= "\n\t</ul>\n";
+			$output .= $r['category_after'] . "\n";
+		}
+	} else {
+		//output one single list using title_li for the title
+		$bookmarks = get_bookmarks( $r );
+
+		if ( ! empty( $bookmarks ) ) {
+			if ( ! empty( $r['title_li'] ) ) {
+				$output .= str_replace(
+					array( '%id', '%class' ),
+					array( "linkcat-" . $r['category'], $r['class'] ),
+					$r['category_before']
+				);
+				$output .= $r['title_before'];
+				$output .= $r['title_li'];
+				$output .= $r['title_after'];
+				$output .= "\n\t<ul class='links-of-blogroll-list'>\n";
+				$output .= _walk_bookmarks( $bookmarks, $r );
+				$output .= "\n\t</ul>\n";
+				$output .= $r['category_after'] . "\n";
+			} else {
+				$output .= _walk_bookmarks( $bookmarks, $r );
+			}
+		}
+	}
+
+	/**
+	 * Filters the bookmarks list before it is echoed or returned.
+	 *
+	 * @since 2.5.0
+	 *
+	 * @param string $html The HTML list of bookmarks.
+	 */
+	$html = apply_filters( 'wp_list_bookmarks', $output );
+
+	if ( ! $r['echo'] ) {
+		return $html;
+	}
+	echo $html;
+}

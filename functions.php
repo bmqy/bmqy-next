@@ -860,12 +860,6 @@ function bmqynext_get_the_tag_list( $id=0, $before = '', $after = '' ) {
 	return join( $sep, $term_links );
 }
 
-if(function_exists('bmqynext_wp_show_bookmarks')){
-	function bmqynext_wp_show_bookmarks(){
-
-	}
-}
-
 /*
  * 压缩html代码
  * */
