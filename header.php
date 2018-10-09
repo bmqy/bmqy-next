@@ -72,7 +72,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div class="container">
+<div class="container <?php echo bmqynext_container_class()?>">
     <div class="headband"></div>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
         <div class="header-inner">

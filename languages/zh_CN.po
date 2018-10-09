@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Sixteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-09-29 17:01+0800\n"
+"PO-Revision-Date: 2018-10-09 14:33+0800\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -387,10 +387,6 @@ msgstr "%s <small>月份</small>"
 msgid "%s <small>Archives</small>"
 msgstr "%s <small>存档</small>"
 
-#. Author tips
-msgid "Note: original article, reprint, please indicate from <a href=\"%1$s\" title=\"%2$s\" >\"%2$s\"</a>, thank you!"
-msgstr "注：原创文章，转载请注明出自 <a href=\"%1$s\" title=\"%2$s\" >《%2$s》</a>，谢谢！"
-
 #. nothing
 msgid "Nothing"
 msgstr "无"
@@ -494,10 +490,6 @@ msgstr "版权声明："
 
 msgid "All articles in this blog are licensed under <a href='https://creativecommons.org/licenses/by-nc-sa/3.0/' rel='external nofollow' target='_blank'>CC BY-NC-SA 3.0</a> unless stating additionally."
 msgstr "本博客所有文章除特别声明外，均采用 <a href='https://creativecommons.org/licenses/by-nc-sa/3.0/' rel='external nofollow' target='_blank'>CC BY-NC-SA 3.0</a> 许可协议。"
-
-#. copyright content tips
-msgid "Note: {{ title }} represents the current article title, {{ link }} represents the current article link"
-msgstr "注意：{{title}} 代表当前文章标题，{{link}} 代表当前文章链接"
 
 #. copyright display
 msgid "Shop Display"
@@ -627,3 +619,6 @@ msgstr "鼠标点击特效"
 #. RSS type
 msgid "File type"
 msgstr "文件类型"
+
+msgid "Very good! There are now %s logs. Keep trying."
+msgstr "很好! 目前共计 %s 篇日志。 继续努力。"

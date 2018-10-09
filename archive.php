@@ -1,65 +1,35 @@
 <?php
 /**
- * The template for displaying archive pages
- *
- * Used to display archive-type pages if nothing more specific matches a query.
- * For example, puts together date-based pages if no date.php file exists.
- *
- * If you'd like to further customize these archive views, you may create a
- * new template file for each one. For example, tag.php (Tag archives),
- * category.php (Category archives), test.php (Author archives), etc.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package WordPress
- * @subpackage Twenty_Sixteen
- * @since Twenty Sixteen 1.0
+ * Template Name: archives
  */
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+<div class="main-inner">
+    <div class="content-wrap">
+        <div id="content" class="content">
+            <section id="posts" class="posts-collapse">
+	            <?php
+	            // Start the loop.
+	            while ( have_posts() ) : the_post();
 
-		<?php if ( have_posts() ) : ?>
+		            // Include the page content template.
+		            get_template_part( 'template-parts/content', 'archive' );
 
-			<header class="page-header">
-				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-					the_archive_description( '<div class="taxonomy-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
+		            // If comments are open or we have at least one comment, load up the comment template.
+		            if ( comments_open() || get_comments_number() ) {
+			            comments_template();
+		            }
 
-			<?php
-			// Start the Loop.
-			while ( have_posts() ) : the_post();
+		            // End of the loop.
+	            endwhile;
+	            ?>
+            </section>
+        </div>
+	    <?php get_sidebar( 'content-bottom' ); ?>
+    </div>
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
-
-			// End the loop.
-			endwhile;
-
-			// Previous/next page navigation.
-			the_posts_pagination( array(
-				'prev_text'          => __( 'Previous page', 'bmqynext' ),
-				'next_text'          => __( 'Next page', 'bmqynext' ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'bmqynext' ) . ' </span>',
-			) );
-
-		// If no content, include the "No posts found" template.
-		else :
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-		</main><!-- .site-main -->
-	</div><!-- .content-area -->
+</div><!-- .content-area -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

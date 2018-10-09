@@ -352,6 +352,117 @@ add_filter( 'widget_tag_cloud_args', 'bmqynext_widget_tag_cloud_args' );
 
 /******************************************************以下为 bmqy-next 主题，新增自定义函数*/
 /*
+ * 添加自定义页面
+ * */
+function bmqynext_add_page($title, $slug, $page_template=''){
+	$allPages = get_pages();//获取所有页面
+	$exists = false;
+	foreach( $allPages as $page ){
+		//通过页面别名来判断页面是否已经存在
+		if( strtolower( $page->post_name ) == strtolower( $slug ) ){
+			$exists = true;
+		}
+	}
+	if( $exists == false ) {
+		$new_page_id = wp_insert_post(
+			array(
+				'post_title' => $title,
+				'post_type'     => 'page',
+				'post_name'  => $slug,
+				'comment_status' => 'closed',
+				'ping_status' => 'closed',
+				'post_content' => '',
+				'post_status' => 'publish',
+				'post_author' => 1,
+				'menu_order' => 0
+			)
+		);
+		//如果插入成功 且设置了模板
+		if($new_page_id && $page_template!=''){
+			//保存页面模板信息
+			update_post_meta($new_page_id, '_wp_page_template',  $page_template);
+		}
+	}
+}
+function bmqynext_add_pages() {
+	global $pagenow;
+	//判断是否为激活主题页面
+	if ( 'themes.php' == $pagenow && isset( $_GET['activated'] ) ){
+		bmqynext_add_page('category','category','category.php'); //页面标题ASHU_PAGE 别名ashu-page  页面模板page-ashu.php
+		bmqynext_add_page('tag','tag','tag.php');
+		bmqynext_add_page('about','about','about.php');
+		bmqynext_add_page('archives','archive','archive.php');
+	}
+}
+add_action( 'load-themes.php', 'bmqynext_add_pages' );
+
+/*
+ * 归档
+ * */
+function bmqynext_archives_list() {
+	//if( !$output = get_option('bmqynext_db_cache_archives_list') ){
+	if( true ){
+		$output = '<span class="archive-move-on"></span>';
+		$output .= '<span class="archive-page-counter">'. sprintf( __('Very good! There are now %s logs. Keep trying.', 'bmqynext'), bmqynext_get_posts_count()) .'</span>';
+		$args = array(
+			'post_type' => array('archives', 'post', 'zsay'),
+			'posts_per_page' => -1, //全部 posts
+			'ignore_sticky_posts' => 1 //忽略 sticky posts
+
+		);
+		$the_query = new WP_Query( $args );
+		$posts_rebuild = array();
+		$year = $mon = 0;
+		while ( $the_query->have_posts() ) : $the_query->the_post();
+			$post_year = get_the_time('Y');
+			$post_mon = get_the_time('m');
+			$post_day = get_the_time('d');
+			if ($year != $post_year) $year = $post_year;
+			if ($mon != $post_mon) $mon = $post_mon;
+			//$posts_rebuild[$year][$mon][] = '<li>'. get_the_time('d日: ') .'<a href="'. get_permalink() .'">'. get_the_title() .'</a> <em>('. get_comments_number('0', '1', '%') .')</em></li>';
+			$posts_rebuild[$year][$mon][] = '<article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article"><header class="post-header"><h2 class="post-title"><a class="post-title-link" href="'. get_permalink() .'" itemprop="url"><span itemprop="name">'. get_the_title() .'</span></a></h2><div class="post-meta"><time class="post-time" itemprop="dateCreated" datetime="'. get_the_time() .'" content="'. $post_year.'-'.$post_mon.'-'.$post_day .'">'. $post_mon.'-'.$post_day .'</time></div></header></article>';
+		endwhile;
+		wp_reset_postdata();
+
+		foreach ($posts_rebuild as $key_y => $y) {
+			$y_i = 0; $y_output = '';
+			foreach ($y as $key_m => $m) {
+				$posts = ''; $i = 0;
+				foreach ($m as $p) {
+					++$i; ++$y_i;
+					$posts .= $p;
+				}
+				//$y_output .= '<li><span class="al_mon">'. $key_m .' 月 <em>( '. $i .' 篇文章 )</em></span><ul class="al_post_list">'; //输出月份
+				$y_output .= $posts; //输出 posts
+				$y_output .= '</ul></li>';
+			}
+			$output .= '<div class="collection-title"><h2 class="archive-year motion-element" id="archive-year-'. $key_y .'">'. $key_y .'</h2></div>'; //输出年份
+			$output .= $y_output;
+			$output .= '</ul>';
+		}
+
+		$output .= '</div>';
+		update_option('bmqynext_db_cache_archives_list', $output);
+	}
+	echo $output;
+}
+function bmqynext_clear_db_cache_archives_list() {
+	update_option('bmqynext_db_cache_archives_list', ''); // 清空 bmqynext_archives_list
+}
+add_action('save_post', 'bmqynext_clear_db_cache_archives_list'); // 新发表文章/修改文章时
+
+/*
+ * 输出container classname
+ * */
+function bmqynext_container_class(){
+	$currentPage = explode('.', get_page_template_slug());
+	if (count($currentPage)>=2){
+		return 'page-'. $currentPage[0];
+	}
+}
+
+
+/*
  * 生成评论链接
  * */
 function bmqynext_comments_popup_link() {
