@@ -10,19 +10,19 @@
 
 <nav class="site-state motion-element">
     <div class="site-state-item site-state-posts">
-        <a href="/archives/">
+        <a href="/archive/">
             <span class="site-state-item-count"><?php echo bmqynext_get_posts_count() ?></span>
             <span class="site-state-item-name"><?php echo _ex('Aside', 'Post format') ?></span>
         </a>
     </div>
     <div class="site-state-item site-state-categories">
-        <a href="#">
+        <a href="/category/">
             <span class="site-state-item-count"><?php echo bmqynext_get_categorys_count() ?></span>
             <span class="site-state-item-name"><?php echo _ex('Categories', 'Theme starter content') ?></span>
         </a>
     </div>
     <div class="site-state-item site-state-tags">
-        <a href="#">
+        <a href="/tag/">
             <span class="site-state-item-count"><?php echo bmqynext_get_targs_count() ?></span>
             <span class="site-state-item-name"><?php echo _ex('Tag', 'taxonomy singular name') ?></span>
         </a>
