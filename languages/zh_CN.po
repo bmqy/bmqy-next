@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Sixteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-10-09 14:33+0800\n"
+"PO-Revision-Date: 2018-10-10 14:15+0800\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -620,5 +620,11 @@ msgstr "鼠标点击特效"
 msgid "File type"
 msgstr "文件类型"
 
+msgid "There are currently %s classifications."
+msgstr "目前共计 %s 个分类"
+
 msgid "Very good! There are now %s logs. Keep trying."
 msgstr "很好! 目前共计 %s 篇日志。 继续努力。"
+
+msgid "There are currently %s labels."
+msgstr "目前共计 %s 个标签"

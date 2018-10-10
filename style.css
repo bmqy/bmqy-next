@@ -2626,7 +2626,7 @@ pre .javascript .function, pre .keyword {
 
 .page-archive .archive-page-counter {
     position: relative;
-    top: 3px;
+    top: 32px;
     left: 20px
 }
 
@@ -2638,7 +2638,7 @@ pre .javascript .function, pre .keyword {
 
 .page-archive .posts-collapse .archive-move-on {
     position: absolute;
-    top: 11px;
+    top: 40px;
     left: 0;
     margin-left: -6px;
     width: 10px;

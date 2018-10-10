@@ -12,12 +12,11 @@
  */
 
 get_header(); ?>
-
 <div class="main-inner">
     <div class="content-wrap">
         <div id="content" class="content">
-            <section id="posts" <?php post_class("posts-collapse"); ?>>
-                <?php if ( have_posts() ) : ?>
+	        <?php if ( is_tag() ) : ?>
+                <section id="posts" <?php post_class("posts-collapse"); ?>>
                     <div class="collection-title">
                         <?php
                         bmqynext_archive_title( '<h1>', '</h1>' );
@@ -28,7 +27,6 @@ get_header(); ?>
                     <?php
                     // Start the Loop.
                     while ( have_posts() ) : the_post();
-
                         /*
                          * Include the Post-Format-specific template for the content.
                          * If you want to override this in a child theme, then include a file
@@ -41,14 +39,29 @@ get_header(); ?>
 
                     // Previous/next page navigation.
 	                bmqynext_pagination();
-
-                // If no content, include the "No posts found" template.
-                else :
-                    get_template_part( 'template-parts/category', 'tag' );
-
-                endif;
-                ?>
-            </section>
+            ?>
+                </section>
+            <?php else : ?>
+                <div id="posts" class="posts-expand">
+                    <header class="post-header">
+                        <h1 class="post-title" itemprop="name headline"></h1>
+                    </header>
+                    <div class="tag-cloud">
+                        <div class="tag-cloud-title">
+                            <?php echo sprintf(__('There are currently %s labels.', 'bmqynext'), bmqynext_get_targs_count()) ?>
+                        </div>
+                        <div class="tag-cloud-tags">
+					        <?php
+					        wp_tag_cloud([
+						        'smallest' => 8,
+                                'largest' => 22,
+                                'number' => 200
+                            ]);
+					        ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endif;?>
         </div>
 
 	</div><!-- .site-main -->

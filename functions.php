@@ -340,7 +340,7 @@ add_filter( 'wp_get_attachment_image_attributes', 'bmqynext_post_thumbnail_sizes
  * @param array $args Arguments for tag cloud widget.
  * @return array The filtered arguments for tag cloud widget.
  */
-function bmqynext_widget_tag_cloud_args( $args ) {
+function bmqynext_widget_tag_cloud_args( $args = [] ) {
 	$args['largest']  = 1;
 	$args['smallest'] = 1;
 	$args['unit']     = 'em';
@@ -400,15 +400,16 @@ add_action( 'load-themes.php', 'bmqynext_add_pages' );
  * 归档
  * */
 function bmqynext_archives_list() {
+	global $posts_per_page, $paged;
 	//if( !$output = get_option('bmqynext_db_cache_archives_list') ){
 	if( true ){
 		$output = '<span class="archive-move-on"></span>';
 		$output .= '<span class="archive-page-counter">'. sprintf( __('Very good! There are now %s logs. Keep trying.', 'bmqynext'), bmqynext_get_posts_count()) .'</span>';
 		$args = array(
-			'post_type' => array('archives', 'post', 'zsay'),
-			'posts_per_page' => -1, //全部 posts
-			'ignore_sticky_posts' => 1 //忽略 sticky posts
-
+			'post_type' => 'post',
+			'posts_per_page' => $posts_per_page, //全部 posts
+			'ignore_sticky_posts' => 1, //忽略 sticky posts
+			'paged' => $paged,
 		);
 		$the_query = new WP_Query( $args );
 		$posts_rebuild = array();
@@ -419,7 +420,6 @@ function bmqynext_archives_list() {
 			$post_day = get_the_time('d');
 			if ($year != $post_year) $year = $post_year;
 			if ($mon != $post_mon) $mon = $post_mon;
-			//$posts_rebuild[$year][$mon][] = '<li>'. get_the_time('d日: ') .'<a href="'. get_permalink() .'">'. get_the_title() .'</a> <em>('. get_comments_number('0', '1', '%') .')</em></li>';
 			$posts_rebuild[$year][$mon][] = '<article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article"><header class="post-header"><h2 class="post-title"><a class="post-title-link" href="'. get_permalink() .'" itemprop="url"><span itemprop="name">'. get_the_title() .'</span></a></h2><div class="post-meta"><time class="post-time" itemprop="dateCreated" datetime="'. get_the_time() .'" content="'. $post_year.'-'.$post_mon.'-'.$post_day .'">'. $post_mon.'-'.$post_day .'</time></div></header></article>';
 		endwhile;
 		wp_reset_postdata();
@@ -432,11 +432,10 @@ function bmqynext_archives_list() {
 					++$i; ++$y_i;
 					$posts .= $p;
 				}
-				//$y_output .= '<li><span class="al_mon">'. $key_m .' 月 <em>( '. $i .' 篇文章 )</em></span><ul class="al_post_list">'; //输出月份
-				$y_output .= $posts; //输出 posts
+				$y_output .= $posts;
 				$y_output .= '</ul></li>';
 			}
-			$output .= '<div class="collection-title"><h2 class="archive-year motion-element" id="archive-year-'. $key_y .'">'. $key_y .'</h2></div>'; //输出年份
+			$output .= '<div class="collection-title"><h2 class="archive-year motion-element" id="archive-year-'. $key_y .'">'. $key_y .'</h2></div>';
 			$output .= $y_output;
 			$output .= '</ul>';
 		}
@@ -445,11 +444,73 @@ function bmqynext_archives_list() {
 		update_option('bmqynext_db_cache_archives_list', $output);
 	}
 	echo $output;
+	bmqynext_query_pagination($args);
 }
 function bmqynext_clear_db_cache_archives_list() {
-	update_option('bmqynext_db_cache_archives_list', ''); // 清空 bmqynext_archives_list
+	update_option('bmqynext_db_cache_archives_list', '');
 }
-add_action('save_post', 'bmqynext_clear_db_cache_archives_list'); // 新发表文章/修改文章时
+add_action('save_post', 'bmqynext_clear_db_cache_archives_list');
+
+
+function bmqynext_query_pagination($query_string){
+	global $posts_per_page, $paged;
+	$query_string['posts_per_page'] = -1;
+	$my_query = new WP_Query($query_string);
+	$total_posts = $my_query->post_count;
+	if(empty($paged))$paged = 1;
+	$prev = $paged - 1;
+	$next = $paged + 1;
+	$range = 2;
+
+	$showitems = ($range * 2)+1;
+	$pages = ceil($total_posts/$posts_per_page);
+	if(1 != $pages){
+		echo "<nav id='pagination' class='pagination'>";
+		//echo ($paged > 2 && $paged+$range+1 > $pages && $showitems < $pages)? "<a href='".get_pagenum_link(1)."'>最前</a>":"";
+		echo ($paged > 1 && $showitems < $pages)? "<a class='extend prev' rel='prev' href='".get_pagenum_link($prev)."'><i class=\"fa fa-angle-left\"></i></a>":"";
+		for ($i=1; $i <= $pages; $i++){
+			if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems )){
+				echo ($paged == $i)? "<span class='page-number current'>".$i."</span>":"<a href='".get_pagenum_link($i)."' class='page-number' >".$i."</a>";
+			}
+		}
+		echo ($paged < $pages && $showitems < $pages) ? "<a class='extend next' rel='next' href='".get_pagenum_link($next)."'><i class=\"fa fa-angle-right\"></i></a>" :"";
+		//echo ($paged < $pages-1 && $paged+$range-1 < $pages && $showitems < $pages) ? "<a href='".get_pagenum_link($pages)."'>最后</a>":"";
+		echo "</nav>\n";
+	}
+}
+
+/*
+ * tags list
+ * */
+function bmqynext_tags_list($text) {
+	$text = preg_replace_callback('|<a (.+?)>|i', 'bmqynext_tags_list_callback', $text);
+	return $text;
+}
+function bmqynext_tags_list_callback($matches) {
+	$text = $matches[1];
+	$color = dechex(rand(0,16777215));//修改此处可以控制随机色彩值的范围
+	$pattern = '/style=(\'|\")(.*)(\'|\")/i';
+	$text = preg_replace($pattern, "style=\"color:#{$color};$2;\"", $text);
+	return "<a $text>";
+}
+add_filter('wp_tag_cloud', 'bmqynext_tags_list', 1);
+
+/*
+ * category list
+ * */
+function bmqynext_categories_list(){
+	$output = wp_list_categories([
+		'depth'=> 3,
+		'show_count'=> 1,
+		'hide_empty'=> 0,
+		'title_li'=> '',
+		'echo' => false,
+	]);
+	$output = preg_replace( '/cat-item cat-item-(\d+)/', 'category-list-item category-list-item-$1', $output );
+	$output = preg_replace( '/class=[\"\']children[\"\']/', 'class="category-list-child"', $output );
+	$output = preg_replace( '/\((\d+)\)/', '<span class="category-list-count">$1</span>', $output );
+	echo $output;
+}
 
 /*
  * 输出container classname
@@ -460,7 +521,6 @@ function bmqynext_container_class(){
 		return 'page-'. $currentPage[0];
 	}
 }
-
 
 /*
  * 生成评论链接
