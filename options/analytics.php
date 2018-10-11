@@ -12,7 +12,8 @@ $baseItem = [
 	'baidu_site_verification'=>[
 		'type'=> 'input',
 		'label'=> 'Baidu site verification',
-		'tips'=> 'Please enter the contents of the content attribute in the HTML label validation mode.'
+		'tips'=> 'Please enter the contents of the content attribute in the HTML label validation mode.',
+		'placeholder'=> 'meta content',
 	],
 	'baidu_analytics'=>[
 		'type'=> 'input',
@@ -22,10 +23,12 @@ $baseItem = [
 	'cnzz_analytics'=>[
 		'type'=> 'input',
 		'label'=> 'CNZZ analytics',
+		'placeholder'=> 'id',
 	],
 	'qihu_site_verification'=>[
 		'type'=> 'input',
 		'label'=> 'Qihu site verification',
+		'placeholder'=> 'meta content',
 	],
 	'qihu_sitemap_auto'=>[
 		'type'=> 'input',
@@ -38,18 +41,22 @@ $baseItem = [
 	'google_analytics'=>[
 		'type'=> 'input',
 		'label'=> 'Google analytics',
+		'placeholder'=> 'id',
 	],
 	'yandex_site_verification'=>[
 		'type'=> 'input',
 		'label'=> 'Yandex site verification',
+		'placeholder'=> 'meta content',
 	],
 	'bing_site_verification'=>[
 		'type'=> 'input',
 		'label'=> 'Bing site verification',
+		'placeholder'=> 'meta content',
 	],
 	'bing_analytics'=>[
 		'type'=> 'input',
 		'label'=> 'Bing analytics',
+		'placeholder'=> 'id',
 	],
 ];
 
