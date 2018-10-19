@@ -1,0 +1,70 @@
+/*
+Please input your CSS.
+*/
+.brand {
+    background: #007acc
+}
+.header {
+    position: relative;
+    background: url(/wp-content/themes/bmqy-next/images/headbg.jpg) no-repeat center 70%;
+    background-size: cover
+}
+.header-inner {
+    padding-top: 300px
+}
+.site-subtitle {
+    color: #ddd;
+    text-shadow: 1px 2px 23px #007acc
+}
+#main {
+    min-height: 330px;
+    background: url(/wp-content/themes/bmqy-next/images/bg.jpg);
+}
+.btn {
+    background: #007acc;
+    border: 2px solid #007acc
+}
+.btn:hover, .post-button .btn:hover {
+    border-color: #007acc;
+    color: #007acc
+}
+.post-button .btn {
+    background: #007acc
+}
+.sidebar-toggle {
+    background: #007acc
+}
+.back-to-top {
+    background: #007acc
+}
+.pagination .next, .pagination .page-number, .pagination .prev {
+    color: #007acc
+}
+.pagination .next:hover, .pagination .page-number:hover, .pagination .prev:hover {
+    border-top-color: #007acc
+}
+.pagination .space {
+    color: #007acc
+}
+.pagination .page-number.current {
+    background: #99d6ff;
+    border-top-color: #007acc
+}
+.form-submit .submit {
+    background: #007acc;
+    border: 2px solid #007acc;
+}
+.form-submit .submit:hover {
+    background: #fff;
+    border-color: #007acc;
+    color: #007acc;
+}
+.comment-reply-link {
+    background-color: #007acc;
+    border: 2px solid #007acc;
+}
+.comment-reply-link:hover, .comment-reply-link:focus {
+    background-color: #fff;
+    border-color: #007acc;
+    color: #007acc;
+}

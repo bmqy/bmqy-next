@@ -9,6 +9,30 @@
 
 $formName = wp_get_theme()->get('TextDomain'). '_options';
 $baseItem = [
+	'use_motion'=>[
+		'type'=> 'switch',
+		'label'=> 'Use Motion',
+		'defaultValue'=> 1
+	],
+	'bg_effects'=>[
+		'type'=> 'select',
+		'label'=> 'Bg Effects',
+		'values'=> [
+			''=> __('Unenabled', 'bmqynext'),
+			'canvas_nest'=> 'Canvas Nest',
+			'three_waves'=> 'Three Waves',
+			'canvas_lines'=> 'Canvas Lines',
+			'canvas_sphere'=> 'Canvas Sphere',
+			'canvas_ribbon'=> 'Canvas Ribbon',
+		],
+		'tips'=> '"Canvas Ribbon" needs "Pisces" theme support.',
+		'defaultValue'=> 1
+	],
+	'fancybox'=>[
+		'type'=> 'switch',
+		'label'=> 'Fancybox',
+		'defaultValue'=> 1
+	],
 	'show_eevee'=>[
 		'type'=> 'switch',
 		'label'=> 'Eevee display',

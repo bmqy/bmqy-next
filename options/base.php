@@ -8,24 +8,46 @@
 
 $formName = wp_get_theme()->get('TextDomain'). '_options';
 $baseItem = [
+		'style'=>[
+			'type'=> 'select',
+			'label'=> __('Themes'),
+			'values'=> [
+				'muse'=> 'Muse',
+				'mist'=> 'Mist',
+				'pisces'=> 'Pisces',
+			],
+			'defaultValue'=> 'muse'
+		],
+		'custom_style'=>[
+			'type'=> 'textarea',
+			'label'=> 'Themes custom css',
+			'size'=> 'large',
+			'tips'=> 'Please enter your custom CSS.'
+		],
+		'custom_stylesheet'=>[
+			'type'=> 'switch',
+			'label'=> 'Themes custom stylesheet',
+			'tips'=> '(When you need to use a style sheet file, edit the "custom. css" file in the theme CSS directory and enable it.)',
+			'defaultValue'=> 1
+		],
+		'keyword'=>[
+			'type'=> 'input',
+			'label'=> 'Site keyword',
+			'placeholder'=> '',
+			'defaultValue'=> '',
+		],
+		'description'=>[
+			'type'=> 'textarea',
+			'label'=> 'Site description',
+			'size'=> 'large',
+			'placeholder'=> '',
+			'defaultValue'=> '',
+		],
         'show_logo'=>[
             'type'=> 'switch',
             'label'=> 'Home Logo display',
             'tips'=> '(please upload your logo icon in "appearance &gt; Custom &gt; site identity")',
             'defaultValue'=> 1
-        ],
-        'keyword'=>[
-            'type'=> 'input',
-            'label'=> 'Site keyword',
-            'placeholder'=> '',
-            'defaultValue'=> '',
-        ],
-        'description'=>[
-            'type'=> 'textarea',
-            'label'=> 'Site description',
-            'size'=> 'large',
-            'placeholder'=> '',
-            'defaultValue'=> '',
         ],
         'since'=>[
 	        'type'=> 'input',

@@ -662,3 +662,12 @@ function bmqynext_list_friendlinks($args = ''){
 	}
 	echo $html;
 }
+
+function bmqynext_html_class( $className = '' ){
+    $className = 'theme-next'. $className;
+    $className .= ' '. get_option('bmqynext_options_style');
+    if(get_option('bmqynext_options_use_motion')==='1'){
+	    $className .= ' use_motion';
+    }
+    return $className;
+}

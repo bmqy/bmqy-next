@@ -10,7 +10,7 @@
  */
 
 ?><!DOCTYPE html>
-<html <?php language_attributes(); ?> class="no-js">
+<html <?php language_attributes(); ?> class="<?php echo bmqynext_html_class() ?>">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -50,11 +50,10 @@
         var NexT = window.NexT || {},
         CONFIG = {
             root: "/",
-            scheme: "Muse",
+            scheme: "<?php echo get_option('bmqynext_options_style') ?>",
             sidebar: {position: "left", display: "post", offset: 12, offset_float: 0, b2t: !1, scrollpercent: !1},
-            fancybox: !0,
-            motion: !0,
-            duoshuo: {userId: "0", author: "博主"},
+            fancybox: <?php echo get_option('bmqynext_options_fancybox')==='1'?'true':'false' ?>,
+            motion: <?php echo get_option('bmqynext_options_use_motion')==='1'?'true':'false' ?>,
             algolia: {
                 applicationID: "",
                 apiKey: "",
@@ -69,6 +68,11 @@
         }
     </script>
     <?php include_once('template-parts/analytics/index.php') ?>
+	<?php if(get_option('bmqynext_options_custom_style')!==''): ?>
+        <style>
+            <?php echo get_option('bmqynext_options_custom_style') ?>
+        </style>
+	<?php endif; ?>
 </head>
 
 <body <?php body_class(); ?>>

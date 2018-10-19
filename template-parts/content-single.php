@@ -74,6 +74,15 @@
             <div class="post-tags">
                 <?php echo $tags_list = bmqynext_get_the_tag_list( '', '# '); ?>
             </div><!-- .post-tags -->
+            <?php if(get_option('bmqynext_options_rating_appid')):?>
+            <div class="post-widgets">
+	            <?php if(get_option('bmqynext_options_rating_appid')):?>
+                <div class="wp_rating">
+                    <div id="wpac-rating"></div>
+                </div>
+	            <?php endif; ?>
+            </div>
+            <?php endif; ?>
             <?php
             if ( is_singular( 'attachment' ) ) {
                 // Parent post navigation.

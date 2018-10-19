@@ -8,6 +8,16 @@
 
 $formName = wp_get_theme()->get('TextDomain'). '_options';
 $baseItem = [
+        'rating_appid'=>[
+            'type'=> 'input',
+            'label'=> 'Rating',
+            'placeholder'=> 'appid',
+        ],
+        'rating_color'=>[
+            'type'=> 'input',
+            'label'=> 'Rating Color',
+            'placeholder'=> 'fc6423',
+        ],
         'changyan_enabled'=>[
             'type'=> 'switch',
             'label'=> 'Chang yan',

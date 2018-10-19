@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Themes - Twenty Sixteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-10-10 14:15+0800\n"
+"PO-Revision-Date: 2018-10-19 14:52+0800\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2\n"
 "Language: zh_CN\n"
 "Project-Id-Version: Themes - bmqy-next\n"
 "POT-Creation-Date: \n"
@@ -435,6 +435,15 @@ msgstr "启用"
 msgid "Unenabled"
 msgstr "不启用"
 
+msgid "Use Motion"
+msgstr "动画效果"
+
+msgid "Bg Effects"
+msgstr "背景动画"
+
+msgid "\"Canvas Ribbon\" needs \"Pisces\" theme support."
+msgstr "\"Canvas Ribbon\" 需要 \"Pisces\" 主题支持"
+
 #. website settings
 msgid "Home Logo display"
 msgstr "首页Logo显示"
@@ -470,6 +479,18 @@ msgstr "图标"
 #. social icon
 msgid "Social Icon"
 msgstr "社交图标"
+
+msgid "Themes custom css"
+msgstr "定制CSS"
+
+msgid "Themes custom stylesheet"
+msgstr "定制主题"
+
+msgid "Please enter your custom CSS."
+msgstr "请输入你的自定义css。"
+
+msgid "(When you need to use a style sheet file, edit the \"custom. css\" file in the theme CSS directory and enable it.)"
+msgstr "（当需要使用样式表文件时，请编辑本主题css目录里的“custom.css”文件后启用它。）"
 
 #. copyright display
 msgid "Copyright Display"
