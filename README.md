@@ -13,5 +13,5 @@
 
 >PS：更多功能，不定期完善中...  
   
-> 联系作者，请加QQ群：  
+> 如需联系作者，请加QQ群：  
 > <img src="https://raw.githubusercontent.com/bmqy/taomi-tools/master/images/temp_qrcode_share_663099879.png" width="200" />
