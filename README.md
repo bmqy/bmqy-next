@@ -14,5 +14,5 @@
 ### 联系作者
 >PS：更多功能，不定期完善中...  
   
-> 如需联系作者，请加QQ群：  
+> 如需联系作者，请加QQ群663099879：  
 > <img src="https://raw.githubusercontent.com/bmqy/taomi-tools/master/images/temp_qrcode_share_663099879.png" width="200" />
