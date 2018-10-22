@@ -20,17 +20,14 @@
             </div>
 
             <div class="theme-info">
-                www.bmqy.net
+                <?php _e("Themes") ?> -
+                <a class="theme-link" target="_blank" href="https://github.com/bmqy/bmqy-next">
+                    <?php echo (get_option('bmqynext_options_style')!=='')?get_option('bmqynext_options_style'):''?>
+                </a>
             </div>
             <?php endif; ?>
 
             <?php if(false):?>
-            <div class="theme-info">
-		        <?php _e("Themes") ?> -
-                <a class="theme-link" target="_blank" href="https://github.com/bmqy/bmqy-next">
-                    bmqy-next
-                </a>
-            </div>
             <div style="display: none;">
                 熊掌号：https://author.baidu.com/home/1545776927809018?from=bmqy
             </div>
