@@ -3,7 +3,7 @@
 ### bmqy-next介绍
 “bmqy-next”主题移植自[Next](http://theme-next.iissnan.com/) ，更多介绍请前往http://theme-next.iissnan.com/查看。
 ### 包含功能
-1. 三套主题风格切换，并可自定义css样式；
+1. 四套主题风格切换，并可自定义css样式；
 2. 自定义网站关键词、描述；
 3. logo自定义
 4. 多种统计代码选择；
