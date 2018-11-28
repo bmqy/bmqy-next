@@ -36,7 +36,6 @@
     </footer>
     <div class="back-to-top"><i class="fa fa-arrow-up"></i></div>
 </div>
-</div>
 <?php wp_footer(); ?>
 
 <?php

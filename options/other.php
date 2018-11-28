@@ -60,7 +60,24 @@ $baseItem = [
             'atom_url'=> 'atom_url',
         ],
 		'defaultValue'=> 0
-	]
+	],
+	'login_security'=>[
+		'type'=> 'switch',
+		'label'=> 'Login Security',
+		'defaultValue'=> 1
+	],
+	'login_security_flag'=>[
+		'type'=> 'input',
+		'label'=> 'Login security flag',
+		'tips'=> 'The only sign for backstage landing entry',
+		'placeholder'=> 'flag',
+	],
+	'login_security_redirect'=>[
+		'type'=> 'input',
+		'label'=> 'Login security redirect',
+		'tips'=> 'Jump link after background login verification failed',
+		'placeholder'=> 'redirect url',
+	],
 ];
 
 if ( isset( $_POST[ $formName ] ) ) {

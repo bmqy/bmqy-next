@@ -15,6 +15,7 @@ $baseItem = [
 				'muse'=> 'Muse',
 				'mist'=> 'Mist',
 				'pisces'=> 'Pisces',
+				'gemini'=> 'Gemini',
 			],
 			'defaultValue'=> 'muse'
 		],

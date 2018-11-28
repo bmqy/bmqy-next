@@ -174,11 +174,13 @@ add_action( 'wp_head', 'bmqynext_javascript_detection', 0 );
 function bmqynext_scripts() {
 	// Theme stylesheet.
 	if(get_option('bmqynext_options_style')==='mist') {
-		wp_enqueue_style( 'bmqynext-style', get_template_directory_uri() . '/css/mist.css', '', '5.1.1' );
+		wp_enqueue_style( 'bmqynext-style', get_template_directory_uri() . '/css/mist.css', '', '5.1.4' );
 	}else if(get_option('bmqynext_options_style')==='pisces'){
-		wp_enqueue_style( 'bmqynext-style', get_template_directory_uri() . '/css/pisces.css', '', '5.1.1' );
+		wp_enqueue_style( 'bmqynext-style', get_template_directory_uri() . '/css/pisces.css', '', '5.1.4' );
+	}else if(get_option('bmqynext_options_style')==='gemini'){
+		wp_enqueue_style( 'bmqynext-style', get_template_directory_uri() . '/css/gemini.css', '', '5.1.4' );
 	}else{
-		wp_enqueue_style( 'bmqynext-style', get_template_directory_uri() . '/css/muse.css', '', '5.1.1' );
+		wp_enqueue_style( 'bmqynext-style', get_template_directory_uri() . '/css/muse.css', '', '5.1.4' );
 	}
 	wp_enqueue_style( 'bmqynext-font-awesome', get_template_directory_uri().'/lib/font-awesome/css/font-awesome.min.css', '', '4.7.0' );
 	wp_enqueue_style( 'bmqynext-fancybox-css', get_template_directory_uri().'/lib/fancybox/source/jquery.fancybox.css', '', '4.7.0' );
@@ -481,6 +483,21 @@ function bmqynext_clear_db_cache_archives_list() {
 }
 add_action('save_post', 'bmqynext_clear_db_cache_archives_list');
 
+/*
+ * 自定义后台登录地址
+ * */
+if(get_option('bmqynext_options_login_security')==='1'){
+	add_action('login_enqueue_scripts','bmqynext_login_security');
+	function bmqynext_login_security(){
+		$loginSecurityFalg = (get_option('bmqynext_options_login_security_flag')!='')?get_option('bmqynext_options_login_security_flag'):'flag';
+		$loginSecurityRedirect = (get_option('bmqynext_options_login_security_redirect')!='')?get_option('bmqynext_options_login_security_redirect'):site_url();
+		if(empty($_GET['security'])){
+			header('Location: '. $loginSecurityRedirect);
+		}else{
+			if($_GET['security'] != $loginSecurityFalg)header('Location: '. $loginSecurityRedirect);
+		}
+	}
+}
 
 function bmqynext_query_pagination($query_string){
 	global $posts_per_page, $paged;
