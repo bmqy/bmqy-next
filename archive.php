@@ -28,8 +28,8 @@ get_header(); ?>
 	    <?php get_sidebar( 'content-bottom' ); ?>
     </div>
 
-	<?php get_sidebar(); ?>
-	<?php get_footer(); ?>
-
 
 </div><!-- .content-area -->
+
+<?php get_sidebar(); ?>
+<?php get_footer(); ?>

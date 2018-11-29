@@ -486,7 +486,7 @@ add_action('save_post', 'bmqynext_clear_db_cache_archives_list');
 /*
  * 自定义后台登录地址
  * */
-if(get_option('bmqynext_options_login_security')==='1'){
+if(get_option('bmqynext_options_login_security')==='111'){
 	add_action('login_enqueue_scripts','bmqynext_login_security');
 	function bmqynext_login_security(){
 		$loginSecurityFalg = (get_option('bmqynext_options_login_security_flag')!='')?get_option('bmqynext_options_login_security_flag'):'flag';
