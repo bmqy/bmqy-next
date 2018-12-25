@@ -29,8 +29,6 @@ get_header(); ?>
             </div>
             <?php get_sidebar( 'content-bottom' ); ?>
         </div>
-
-
     </div><!-- .content-area -->
 </main>
 <?php get_sidebar(); ?>
