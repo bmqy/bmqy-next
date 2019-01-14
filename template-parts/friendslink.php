@@ -9,8 +9,8 @@
 ?>
 <?php
 bmqynext_list_friendlinks([
-	'orderby' => 'name',
-	'order' => 'ASC',
+	'orderby' => 'rating',
+	'order' => 'DESC',
 	'limit' => -1,
 	'category' => '',
 	'exclude_category' => '',
