@@ -56,6 +56,12 @@ $baseItem = [
 	        'placeholder'=> '2014',
 	        'tips'=> 'This time will be displayed at the bottom of the site, for example: ©2014 - 2018.',
         ],
+        'filing'=>[
+	        'type'=> 'input',
+	        'label'=> 'Website filing',
+	        'placeholder'=> '',
+	        'tips'=> 'website record code.',
+        ],
         'powered'=>[
 	        'type'=> 'switch',
 	        'label'=> 'Powered',

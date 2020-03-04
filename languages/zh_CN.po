@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Themes - Twenty Sixteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-11-09 13:40+0800\n"
+"PO-Revision-Date: 2020-03-04 19:50+0800\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.1.1\n"
 "Language: zh_CN\n"
 "Project-Id-Version: Themes - bmqy-next\n"
 "POT-Creation-Date: \n"
@@ -427,6 +427,10 @@ msgstr "其它设置"
 msgid "Site since"
 msgstr "建站时间"
 
+#. Website filing
+msgid "Website filing"
+msgstr "网站备案"
+
 #. unenabled
 msgid "Enabled"
 msgstr "启用"
@@ -459,6 +463,10 @@ msgstr "站点描述"
 #. Site since tips
 msgid "This time will be displayed at the bottom of the site, for example: ©2014 - 2018."
 msgstr "这个时间将在站点的底部显示，例如：©2014 - 2018。"
+
+#. Website filing tips
+msgid "website record code."
+msgstr "网站备案编码。"
 
 #. upload logo tips
 msgid "(please upload your logo icon in \"appearance &gt; Custom &gt; site identity\")"
