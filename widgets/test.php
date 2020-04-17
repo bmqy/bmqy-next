@@ -1,9 +1,10 @@
 <?php
 /**
  * Created by IntelliJ IDEA.
- * User: ibicn
- * Date: 2018-08-14
- * Time: 16:11
+ *
+ * @package WordPress
+ * @subpackage bmqy-next
+ * @since bmqy next 1.1
  */
 class bmqynext_custom_widget_test extends WP_Widget {
 	/*

@@ -1,3 +1,13 @@
+<?php
+/**
+* The template part for displaying content
+*
+* @package WordPress
+* @subpackage bmqy-next
+* @since bmqy next 1.1
+*/
+?>
+
 <?php if($rating && (is_home() && is_post())): ?>
 <script type="text/javascript">
   wpac_init = window.wpac_init || [];

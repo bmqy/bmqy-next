@@ -1,3 +1,13 @@
+<?php
+/**
+ * The template part for displaying content
+ *
+ * @package WordPress
+ * @subpackage bmqy-next
+ * @since bmqy next 1.1
+ */
+?>
+
 <?php if(get_option('bmqynext_options_share_baidu')==="button"): ?>
   <div class="bdsharebuttonbox">
     <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>

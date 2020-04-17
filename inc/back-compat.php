@@ -1,22 +1,18 @@
 <?php
 /**
- * Twenty Sixteen back compat functionality
- *
- * Prevents Twenty Sixteen from running on WordPress versions prior to 4.4,
- * since this theme is not meant to be backward compatible beyond that and
- * relies on many newer functions and markup changes introduced in 4.4.
+ * Custom bmqy next template tags
  *
  * @package WordPress
- * @subpackage Twenty_Sixteen
- * @since Twenty Sixteen 1.0
+ * @subpackage bmqy-next
+ * @since bmqy next 1.1
  */
 
 /**
- * Prevent switching to Twenty Sixteen on old versions of WordPress.
+ * Prevent switching to bmqy-next on old versions of WordPress.
  *
  * Switches to the default theme.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_ajax_search_post
  */
 function bmqynext_switch_theme() {
 	switch_theme( WP_DEFAULT_THEME, WP_DEFAULT_THEME );
@@ -31,26 +27,26 @@ add_action( 'after_switch_theme', 'bmqynext_switch_theme' );
  * Adds a message for unsuccessful theme switch.
  *
  * Prints an update nag after an unsuccessful attempt to switch to
- * Twenty Sixteen on WordPress versions prior to 4.4.
+ * bmqy-next on WordPress versions prior to 4.4.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_ajax_search_post
  *
  * @global string $wp_version WordPress version.
  */
 function bmqynext_upgrade_notice() {
-	$message = sprintf( __( 'Twenty Sixteen requires at least WordPress version 4.4. You are running version %s. Please upgrade and try again.', 'bmqynext' ), $GLOBALS['wp_version'] );
+	$message = sprintf( __( 'bmqy-next requires at least WordPress version 4.4. You are running version %s. Please upgrade and try again.', 'bmqynext' ), $GLOBALS['wp_version'] );
 	printf( '<div class="error"><p>%s</p></div>', $message );
 }
 
 /**
  * Prevents the Customizer from being loaded on WordPress versions prior to 4.4.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_ajax_search_post
  *
  * @global string $wp_version WordPress version.
  */
 function bmqynext_customize() {
-	wp_die( sprintf( __( 'Twenty Sixteen requires at least WordPress version 4.4. You are running version %s. Please upgrade and try again.', 'bmqynext' ), $GLOBALS['wp_version'] ), '', array(
+	wp_die( sprintf( __( 'bmqy-next requires at least WordPress version 4.4. You are running version %s. Please upgrade and try again.', 'bmqynext' ), $GLOBALS['wp_version'] ), '', array(
 		'back_link' => true,
 	) );
 }
@@ -59,13 +55,13 @@ add_action( 'load-customize.php', 'bmqynext_customize' );
 /**
  * Prevents the Theme Preview from being loaded on WordPress versions prior to 4.4.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_ajax_search_post
  *
  * @global string $wp_version WordPress version.
  */
 function bmqynext_preview() {
 	if ( isset( $_GET['preview'] ) ) {
-		wp_die( sprintf( __( 'Twenty Sixteen requires at least WordPress version 4.4. You are running version %s. Please upgrade and try again.', 'bmqynext' ), $GLOBALS['wp_version'] ) );
+		wp_die( sprintf( __( 'bmqy-next requires at least WordPress version 4.4. You are running version %s. Please upgrade and try again.', 'bmqynext' ), $GLOBALS['wp_version'] ) );
 	}
 }
 add_action( 'template_redirect', 'bmqynext_preview' );

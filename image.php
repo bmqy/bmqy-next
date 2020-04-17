@@ -3,8 +3,8 @@
  * The template for displaying image attachments
  *
  * @package WordPress
- * @subpackage Twenty_Sixteen
- * @since Twenty Sixteen 1.0
+ * @subpackage bmqy-next
+ * @since bmqy next 1.1
  */
 
 get_header(); ?>
@@ -37,7 +37,7 @@ get_header(); ?>
 								/**
 								 * Filter the default bmqynext image attachment size.
 								 *
-								 * @since Twenty Sixteen 1.0
+								 * @since bmqynext_ajax_search_post
 								 *
 								 * @param string $image_size Image size. Default 'large'.
 								 */

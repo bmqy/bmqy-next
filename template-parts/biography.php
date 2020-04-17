@@ -3,8 +3,8 @@
  * The template part for displaying an Author biography
  *
  * @package WordPress
- * @subpackage Twenty_Sixteen
- * @since Twenty Sixteen 1.0
+ * @subpackage bmqy-next
+ * @since bmqy next 1.1
  */
 ?>
 
@@ -12,9 +12,9 @@
 	<div class="author-avatar">
 		<?php
 		/**
-		 * Filter the Twenty Sixteen author bio avatar size.
+		 * Filter the bmqy-next author bio avatar size.
 		 *
-		 * @since Twenty Sixteen 1.0
+		 * @since bmqynext_ajax_search_post
 		 *
 		 * @param int $size The avatar height and width size in pixels.
 		 */

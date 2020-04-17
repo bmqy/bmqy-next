@@ -1,9 +1,10 @@
 <?php
 /**
- * Created by IntelliJ IDEA.
- * User: bmqy
- * Date: 2018-08-15
- * Time: 13:20
+ * The template part for displaying content
+ *
+ * @package WordPress
+ * @subpackage bmqy-next
+ * @since bmqy next 1.1
  */
 
 $formName = wp_get_theme()->get('TextDomain'). '_options';
@@ -20,6 +21,12 @@ $baseItem = [
 	        'placeholder'=> '',
 	        'tips'=> '(Add search items to the navigation menu)',
 	        'defaultValue'=> 1
+        ],
+        'localsearch_path'=>[
+	        'type'=> 'input',
+	        'label'=> 'Search Path',
+	        'placeholder'=> '',
+	        'tips'=> '(The path of the search result file, for example: "/search.xml", using the "admin_ajax" interface by default)',
         ],
 ];
 

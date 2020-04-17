@@ -1,12 +1,10 @@
 <?php
 /**
- * Custom Twenty Sixteen template tags
- *
- * Eventually, some of the functionality here could be replaced by core features.
+ * Custom bmqy next template tags
  *
  * @package WordPress
- * @subpackage Twenty_Sixteen
- * @since Twenty Sixteen 1.0
+ * @subpackage bmqy-next
+ * @since bmqy next 1.1
  */
 
 if(! function_exists('bmqynext_wp_head')){

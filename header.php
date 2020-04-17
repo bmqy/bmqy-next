@@ -2,11 +2,9 @@
 /**
  * The template for displaying the header
  *
- * Displays all of the head element and everything up until the "site-content" div.
- *
  * @package WordPress
- * @subpackage bmqy.next
- * @since bmqy.next 1.0
+ * @subpackage bmqy-next
+ * @since bmqy next 1.1
  */
 
 ?><!DOCTYPE html>

@@ -1,6 +1,10 @@
 <?php
 /**
  * Template Name: archives
+ *
+ * @package WordPress
+ * @subpackage bmqy-next
+ * @since bmqy next 1.1
  */
 
 get_header(); ?>

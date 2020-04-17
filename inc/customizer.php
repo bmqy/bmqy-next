@@ -1,16 +1,16 @@
 <?php
 /**
- * Twenty Sixteen Customizer functionality
+ * Custom bmqy next template tags
  *
  * @package WordPress
- * @subpackage Twenty_Sixteen
- * @since Twenty Sixteen 1.0
+ * @subpackage bmqy-next
+ * @since bmqy next 1.1
  */
 
 /**
  * Sets up the WordPress core custom header and custom background features.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_custom_header_and_background
  *
  * @see bmqynext_header_style()
  */
@@ -20,9 +20,9 @@ function bmqynext_custom_header_and_background() {
 	$default_text_color       = trim( $color_scheme[3], '#' );
 
 	/**
-	 * Filter the arguments used when adding 'custom-background' support in Twenty Sixteen.
+	 * Filter the arguments used when adding 'custom-background' support in bmqy-next.
 	 *
-	 * @since Twenty Sixteen 1.0
+	 * @since bmqynext_custom_header_and_background
 	 *
 	 * @param array $args {
 	 *     An array of custom-background support arguments.
@@ -35,9 +35,9 @@ function bmqynext_custom_header_and_background() {
 	) ) );
 
 	/**
-	 * Filter the arguments used when adding 'custom-header' support in Twenty Sixteen.
+	 * Filter the arguments used when adding 'custom-header' support in bmqy-next.
 	 *
-	 * @since Twenty Sixteen 1.0
+	 * @since bmqynext_custom_header_and_background
 	 *
 	 * @param array $args {
 	 *     An array of custom-header support arguments.
@@ -66,7 +66,7 @@ if ( ! function_exists( 'bmqynext_header_style' ) ) :
  *
  * Create your own bmqynext_header_style() function to override in a child theme.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_header_style
  *
  * @see bmqynext_custom_header_and_background().
  */
@@ -96,7 +96,7 @@ endif; // bmqynext_header_style
 /**
  * Adds postMessage support for site title and description for the Customizer.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_customize_register
  *
  * @param WP_Customize_Manager $wp_customize The Customizer object.
  */
@@ -190,7 +190,7 @@ add_action( 'customize_register', 'bmqynext_customize_register', 11 );
 /**
  * Render the site title for the selective refresh partial.
  *
- * @since Twenty Sixteen 1.2
+ * @since bmqy-next 1.1
  * @see bmqynext_customize_register()
  *
  * @return void
@@ -202,7 +202,7 @@ function bmqynext_customize_partial_blogname() {
 /**
  * Render the site tagline for the selective refresh partial.
  *
- * @since Twenty Sixteen 1.2
+ * @since bmqy-next 1.1
  * @see bmqynext_customize_register()
  *
  * @return void
@@ -212,7 +212,7 @@ function bmqynext_customize_partial_blogdescription() {
 }
 
 /**
- * Registers color schemes for Twenty Sixteen.
+ * Registers color schemes for bmqy-next.
  *
  * Can be filtered with {@see 'bmqynext_color_schemes'}.
  *
@@ -223,17 +223,17 @@ function bmqynext_customize_partial_blogdescription() {
  * 4. Main Text Color.
  * 5. Secondary Text Color.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_get_color_schemes
  *
  * @return array An associative array of color scheme options.
  */
 function bmqynext_get_color_schemes() {
 	/**
-	 * Filter the color schemes registered for use with Twenty Sixteen.
+	 * Filter the color schemes registered for use with bmqy-next.
 	 *
 	 * The default schemes include 'default', 'dark', 'gray', 'red', and 'yellow'.
 	 *
-	 * @since Twenty Sixteen 1.0
+	 * @since bmqynext_get_color_schemes
 	 *
 	 * @param array $schemes {
 	 *     Associative array of color schemes data.
@@ -304,11 +304,11 @@ function bmqynext_get_color_schemes() {
 
 if ( ! function_exists( 'bmqynext_get_color_scheme' ) ) :
 /**
- * Retrieves the current Twenty Sixteen color scheme.
+ * Retrieves the current bmqy-next color scheme.
  *
  * Create your own bmqynext_get_color_scheme() function to override in a child theme.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_get_color_scheme
  *
  * @return array An associative array of either the current or default color scheme HEX values.
  */
@@ -326,12 +326,12 @@ endif; // bmqynext_get_color_scheme
 
 if ( ! function_exists( 'bmqynext_get_color_scheme_choices' ) ) :
 /**
- * Retrieves an array of color scheme choices registered for Twenty Sixteen.
+ * Retrieves an array of color scheme choices registered for bmqy-next.
  *
  * Create your own bmqynext_get_color_scheme_choices() function to override
  * in a child theme.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_get_color_scheme_choices
  *
  * @return array Array of color schemes.
  */
@@ -350,12 +350,12 @@ endif; // bmqynext_get_color_scheme_choices
 
 if ( ! function_exists( 'bmqynext_sanitize_color_scheme' ) ) :
 /**
- * Handles sanitization for Twenty Sixteen color schemes.
+ * Handles sanitization for bmqy-next color schemes.
  *
  * Create your own bmqynext_sanitize_color_scheme() function to override
  * in a child theme.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_sanitize_color_scheme
  *
  * @param string $value Color scheme name value.
  * @return string Color scheme name.
@@ -374,7 +374,7 @@ endif; // bmqynext_sanitize_color_scheme
 /**
  * Enqueues front-end CSS for color scheme.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_color_scheme_css
  *
  * @see wp_add_inline_style()
  */
@@ -418,7 +418,7 @@ add_action( 'wp_enqueue_scripts', 'bmqynext_color_scheme_css' );
  *
  * Passes color scheme data as colorScheme global.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_customize_control_js
  */
 function bmqynext_customize_control_js() {
 	wp_enqueue_script( 'color-scheme-control', get_template_directory_uri() . '/js/color-scheme-control.js', array( 'customize-controls', 'iris', 'underscore', 'wp-util' ), '20160816', true );
@@ -429,7 +429,7 @@ add_action( 'customize_controls_enqueue_scripts', 'bmqynext_customize_control_js
 /**
  * Binds JS handlers to make the Customizer preview reload changes asynchronously.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_customize_preview_js
  */
 function bmqynext_customize_preview_js() {
 	wp_enqueue_script( 'bmqynext-customize-preview', get_template_directory_uri() . '/js/customize-preview.js', array( 'customize-preview' ), '20160816', true );
@@ -439,7 +439,7 @@ add_action( 'customize_preview_init', 'bmqynext_customize_preview_js' );
 /**
  * Returns CSS for the color schemes.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_get_color_scheme_css
  *
  * @param array $colors Color scheme colors.
  * @return string Color scheme CSS.
@@ -769,7 +769,7 @@ CSS;
  * The template generates the css dynamically for instant display in the
  * Customizer preview.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_color_scheme_css_template
  */
 function bmqynext_color_scheme_css_template() {
 	$colors = array(
@@ -791,7 +791,7 @@ add_action( 'customize_controls_print_footer_scripts', 'bmqynext_color_scheme_cs
 /**
  * Enqueues front-end CSS for the page background color.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_page_background_color_css
  *
  * @see wp_add_inline_style()
  */
@@ -864,7 +864,7 @@ add_action( 'wp_enqueue_scripts', 'bmqynext_page_background_color_css', 11 );
 /**
  * Enqueues front-end CSS for the link color.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_link_color_css
  *
  * @see wp_add_inline_style()
  */
@@ -967,7 +967,7 @@ add_action( 'wp_enqueue_scripts', 'bmqynext_link_color_css', 11 );
 /**
  * Enqueues front-end CSS for the main text color.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_main_text_color_css
  *
  * @see wp_add_inline_style()
  */
@@ -1121,7 +1121,7 @@ add_action( 'wp_enqueue_scripts', 'bmqynext_main_text_color_css', 11 );
 /**
  * Enqueues front-end CSS for the secondary text color.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_secondary_text_color_css
  *
  * @see wp_add_inline_style()
  */

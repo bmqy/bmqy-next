@@ -1,11 +1,13 @@
 <?php
 /**
- * Created by IntelliJ IDEA.
- * User: bmqy
- * Date: 2018-09-29
- * Time: 16:31
+ * The template part for displaying content
+ *
+ * @package WordPress
+ * @subpackage bmqy-next
+ * @since bmqy next 1.1
  */
 ?>
+
 <?php if(get_option('bmqynext_options_changyan_enabled')==='1' && !empty(get_option('bmqynext_options_changyan_appid')) && !empty(get_option('bmqynext_options_changyan_appkey'))): ?>
 	<?php if(is_home()): ?>
 <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=<?php echo get_option('bmqynext_options_changyan_appid') ?>"></script>

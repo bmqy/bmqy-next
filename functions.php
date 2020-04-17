@@ -18,7 +18,7 @@ if ( ! function_exists( 'bmqynext_setup' ) ) :
  *
  * Create your own bmqynext_setup() function to override in a child theme.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_setup
  */
 function bmqynext_setup() {
 	/*
@@ -43,7 +43,7 @@ function bmqynext_setup() {
 	/*
 	 * Enable support for custom logo.
 	 *
-	 *  @since Twenty Sixteen 1.2
+	 *  @since bmqy-next 1.1
 	 */
 	add_theme_support( 'custom-logo', array(
 		'height'      => 240,
@@ -107,7 +107,7 @@ add_action( 'after_setup_theme', 'bmqynext_setup' );
  *
  * @global int $content_width
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_content_width
  */
 function bmqynext_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'bmqynext_content_width', 840 );
@@ -119,7 +119,7 @@ add_action( 'after_setup_theme', 'bmqynext_content_width', 0 );
  *
  * @link https://developer.wordpress.org/reference/functions/register_sidebar/
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_widgets_init
  */
 function bmqynext_widgets_init() {
 	register_sidebar( array(
@@ -159,7 +159,7 @@ add_action( 'widgets_init', 'bmqynext_widgets_init' );
  *
  * Adds a `js` class to the root `<html>` element when JavaScript is detected.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_javascript_detection
  */
 function bmqynext_javascript_detection() {
 	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
@@ -169,7 +169,7 @@ add_action( 'wp_head', 'bmqynext_javascript_detection', 0 );
 /**
  * Enqueues scripts and styles.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_scripts
  */
 function bmqynext_scripts() {
 	// Theme stylesheet.
@@ -239,7 +239,7 @@ add_action( 'wp_enqueue_scripts', 'bmqynext_scripts' );
 /**
  * Adds custom classes to the array of body classes.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_body_classes
  *
  * @param array $classes Classes for the body element.
  * @return array (Maybe) filtered body classes.
@@ -272,7 +272,7 @@ add_filter( 'body_class', 'bmqynext_body_classes' );
 /**
  * Converts a HEX value to RGB.
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_hex2rgb
  *
  * @param string $color The original color, in 3- or 6-digit hexadecimal form.
  * @return array Array containing RGB (red, green, and blue) values for the given
@@ -310,7 +310,7 @@ require get_template_directory() . '/inc/customizer.php';
  * Add custom image sizes attribute to enhance responsive image functionality
  * for content images
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_content_image_sizes_attr
  *
  * @param string $sizes A source size value for use in a 'sizes' attribute.
  * @param array  $size  Image size. Accepts an array of width and height
@@ -344,7 +344,7 @@ add_filter( 'wp_calculate_image_sizes', 'bmqynext_content_image_sizes_attr', 10 
  * Add custom image sizes attribute to enhance responsive image functionality
  * for post thumbnails
  *
- * @since Twenty Sixteen 1.0
+ * @since bmqynext_post_thumbnail_sizes_attr
  *
  * @param array $attr Attributes for the image markup.
  * @param int   $attachment Image attachment ID.
@@ -367,7 +367,7 @@ add_filter( 'wp_get_attachment_image_attributes', 'bmqynext_post_thumbnail_sizes
  * Modifies tag cloud widget arguments to display all tags in the same font size
  * and use list format for better accessibility.
  *
- * @since Twenty Sixteen 1.1
+ * @since bmqy-next 1.1
  *
  * @param array $args Arguments for tag cloud widget.
  * @return array The filtered arguments for tag cloud widget.
@@ -1268,4 +1268,42 @@ if(!function_exists('bmqynext_generate_form')){
 
 		echo $html;
 	}
+}
+
+// localsearch返回所有文章
+if(!function_exists('bmqynext_ajax_search_post')){
+    function bmqynext_ajax_search_post(){
+        // 指定返回头
+        header("Content-Type: application/json");
+        $args     = [
+            'posts_per_page'      => -1,
+            'ignore_sticky_posts' => 1,
+            'post_type'           => 'post',
+            'post_status'         => 'publish',
+            'order'               => 'desc',
+            'cache_results'       => true,
+        ];
+        // 获取所有文章
+        $result   = new WP_Query($args);
+        $articles = [];
+        if ($result->have_posts()) {
+            while ($result->have_posts()) {
+                $result->the_post();
+
+                global $post;
+                $articles[] = [
+                    'id'         => get_the_ID(),
+                    'title' => get_the_title(),
+                    'content' => $post->post_content,
+                    'url'  => get_permalink(get_the_ID()),
+                ];
+            }
+        }
+
+        wp_reset_query();
+        echo $response = (json_encode($articles, JSON_UNESCAPED_UNICODE));
+        die();
+    }
+    add_action( 'wp_ajax_nopriv_bmqynext_ajax_search_post', 'bmqynext_ajax_search_post');
+    add_action( 'wp_ajax_bmqynext_ajax_search_post', 'bmqynext_ajax_search_post');
 }

@@ -1,11 +1,13 @@
 <?php
 /**
- * Created by IntelliJ IDEA.
- * User: bmqy
- * Date: 2018-09-03
- * Time: 16:52
+ * The template part for displaying content
+ *
+ * @package WordPress
+ * @subpackage bmqy-next
+ * @since bmqy next 1.1
  */
 ?>
+
 <div style="display: none;">
 	<?php include_once('baidu.php') ?>
 	<?php include_once('cnzz.php') ?>

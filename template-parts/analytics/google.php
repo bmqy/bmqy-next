@@ -1,7 +1,9 @@
 <?php
 /**
- * Created by IntelliJ IDEA.
- * User: bmqy
- * Date: 2018-09-03
- * Time: 17:02
+ * The template part for displaying content
+ *
+ * @package WordPress
+ * @subpackage bmqy-next
+ * @since bmqy next 1.1
  */
+?>

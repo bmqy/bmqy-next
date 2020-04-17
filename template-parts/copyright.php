@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage bmqy-next
- * @since bmqy next 1.0
+ * @since bmqy next 1.1
  */
 ?>
 <ul class="post-copyright">

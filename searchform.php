@@ -1,10 +1,10 @@
 <?php
 /**
- * Template for displaying search forms in Twenty Sixteen
+ * Template for displaying search forms in bmqy-next
  *
  * @package WordPress
- * @subpackage Twenty_Sixteen
- * @since Twenty Sixteen 1.0
+ * @subpackage bmqy-next
+ * @since bmqy next 1.1
  */
 ?>
 <div class="popup search-popup local-search-popup" style="display:none;">
@@ -12,7 +12,9 @@
         <span class="search-icon"><i class="fa fa-search"></i> </span>
         <span class="popup-btn-close"><i class="fa fa-times-circle"></i></span>
         <div class="local-search-input-wrapper">
-            <input autocomplete="off" placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'bmqynext' ); ?>" spellcheck="false" type="text" id="local-search-input" autocapitalize="none" autocorrect="off">
+            <input autocomplete="off" placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'bmqynext' ); ?>" spellcheck="false" type="text" id="local-search-input" autocapitalize="none" autocorrect="off" name="s">
+
+            <!--<input type="search" id="search-form-1" class="search-field" placeholder="搜索…" value="">-->
         </div>
     </div>
     <div id="local-search-result"></div>
