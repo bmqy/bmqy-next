@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage bmqy-next
- * @since bmqy next 1.1
+ * @since bmqy next
  */
 ?>
 <div class="popup search-popup local-search-popup" style="display:none;">

@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage bmqy-next
- * @since bmqy next 1.1
+ * @since bmqy next
  */
 
 if(! function_exists('bmqynext_wp_head')){

@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage bmqy-next
- * @since bmqy next 1.1
+ * @since bmqy next
  */
 
 $page = isset($_REQUEST["page"]) ? $_REQUEST["page"] : "bmqynext_settings";

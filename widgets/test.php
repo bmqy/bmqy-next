@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage bmqy-next
- * @since bmqy next 1.1
+ * @since bmqy next
  */
 class bmqynext_custom_widget_test extends WP_Widget {
 	/*

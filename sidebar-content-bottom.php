@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage bmqy-next
- * @since bmqy next 1.1
+ * @since bmqy next
  */
 
 if ( ! is_active_sidebar( 'sidebar-2' ) && ! is_active_sidebar( 'sidebar-3' ) ) {
