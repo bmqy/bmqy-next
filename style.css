@@ -1,14 +1,17 @@
 /*
 Theme Name: bmqy-next
-Theme URI: http://theme-next.iissnan.com/
+Theme URI: https://github.com/bmqy/bmqy-next
 Author: bmqy
 Author URI: http://www.bmqy.net/
-Description: wordpress's theme next for bmqy
-Version: 1.1
+Description: wordpress's theme next for bmqy. Copyright owner: IIssNan, http://theme-next.iissnan.com/.
+Version: 1.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: elegant, one-column, right-sidebar, custom-header, custom-menu, editor-style
 Text Domain: bmqynext
+Github Theme URI: https://github.com/bmqy/bmqy-next
 */
+
 /*
  * 以下为适配wordpress
  */
@@ -250,4 +253,45 @@ Text Domain: bmqynext
     background: #fff;
     border-color: #222;
     color: #222
+}
+
+/* highlight-number适配next */
+table.hljs-ln {
+    margin: -0.5em;
+    width: auto;
+    border: none;
+}
+table.hljs-ln > tbody > tr:hover {
+    background-color: initial;
+}
+table.hljs-ln > tbody > tr:nth-of-type(odd) {
+    background-color: initial;
+}
+table.hljs-ln td {
+    border: none;
+    padding: 0;
+}
+table.hljs-ln .hljs-ln-numbers {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: right;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    opacity: .7;
+    position: relative;
+}
+table.hljs-ln .hljs-ln-numbers::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,.2);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+table.hljs-ln .hljs-ln-code {
+    padding-left: 10px;
+    padding-right: 10px;
 }

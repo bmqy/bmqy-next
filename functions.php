@@ -182,6 +182,21 @@ function bmqynext_scripts() {
 	}else{
 		wp_enqueue_style( 'bmqynext-style', get_template_directory_uri() . '/css/muse.css', '', '5.1.4' );
 	}
+	// Highlight theme stylesheet.
+    if(get_option('bmqynext_options_enable_highlight')==='1'){
+        if(get_option('bmqynext_options_highlight_theme')!='') {
+            wp_enqueue_style( 'bmqynext-highlight-theme', get_template_directory_uri() . '/lib/highlight/styles/'. get_option('bmqynext_options_highlight_theme') .'.css', '', '10.0.1' );
+        }else{
+            wp_enqueue_style( 'bmqynext-highlight-theme', get_template_directory_uri() . '/lib/highlight/styles/tomorrow.css', '', '5.1.4' );
+        }
+
+        // Highlight theme script.
+        wp_enqueue_script( 'bmqynext-highlight-theme', get_template_directory_uri().'/lib/highlight/highlight.min.js', '', '10.0.1', false );
+        if(get_option('bmqynext_options_enable_highlight_number')==='1'){
+            wp_enqueue_script( 'bmqynext-highlight-number', get_template_directory_uri().'/lib/highlight/highlightjs-line-numbers', '', '2.7.0', false );
+        }
+    }
+
 	wp_enqueue_style( 'bmqynext-font-awesome', get_template_directory_uri().'/lib/font-awesome/css/font-awesome.min.css', '', '4.7.0' );
 	wp_enqueue_style( 'bmqynext-fancybox-css', get_template_directory_uri().'/lib/fancybox/source/jquery.fancybox.css', '', '4.7.0' );
 	wp_enqueue_style( 'bmqynext-style-default', get_stylesheet_uri() );
@@ -486,7 +501,7 @@ add_action('save_post', 'bmqynext_clear_db_cache_archives_list');
 /*
  * 自定义后台登录地址
  * */
-if(get_option('bmqynext_options_login_security')==='111'){
+if(get_option('bmqynext_options_login_security')==='1'){
 	add_action('login_enqueue_scripts','bmqynext_login_security');
 	function bmqynext_login_security(){
 		$loginSecurityFalg = (get_option('bmqynext_options_login_security_flag')!='')?get_option('bmqynext_options_login_security_flag'):'flag';
@@ -1306,4 +1321,17 @@ if(!function_exists('bmqynext_ajax_search_post')){
     }
     add_action( 'wp_ajax_nopriv_bmqynext_ajax_search_post', 'bmqynext_ajax_search_post');
     add_action( 'wp_ajax_bmqynext_ajax_search_post', 'bmqynext_ajax_search_post');
+}
+
+/* 检测主题更新 */
+if(!function_exists('bmqynext_check_theme_update')){
+    function bmqynext_check_theme_update(){
+        require 'inc/plugin-update-checker/plugin-update-checker.php';
+        $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+            'https://github.com/bmqy/bmqy-next',
+            __FILE__,
+            'bmqy-next'
+        );
+    }
+    add_action('wp_loaded', 'bmqynext_check_theme_update');
 }

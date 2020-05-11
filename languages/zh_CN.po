@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - bmqy-next package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-04-17 16:27+0800\n"
+"PO-Revision-Date: 2020-05-11 11:30+0800\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -391,6 +391,10 @@ msgstr "%s <small>存档</small>"
 msgid "Nothing"
 msgstr "无"
 
+#. theme description
+msgid "wordpress's theme next for bmqy. Copyright owner: IIssNan, http://theme-next.iissnan.com/."
+msgstr "bmqy为wordpress移植的theme next主题。版权归IIssNan所有，http://theme-next.iissnan.com/。"
+
 #. theme options
 msgid "Bmqy-next Settings"
 msgstr "bmqy-next 主题设置"
@@ -495,6 +499,15 @@ msgstr "图标"
 #. social icon
 msgid "Social Icon"
 msgstr "社交图标"
+
+msgid "Enable Highlight"
+msgstr "启用代码高亮"
+
+msgid "Enable Highlight Number"
+msgstr "显示代码行号"
+
+msgid "Highlight Theme"
+msgstr "代码高亮主题"
 
 msgid "Themes custom css"
 msgstr "定制CSS"
@@ -654,19 +667,22 @@ msgid "Mouse Click Effects"
 msgstr "鼠标点击特效"
 
 msgid "Login Security"
-msgstr "登陆安全"
+msgstr "登录安全"
 
 msgid "Login security flag"
-msgstr "登陆安全标识"
+msgstr "登录安全标识"
+
+msgid "(After being enabled, the login address needs to add security identification parameters, such as: '?Security = flag')"
+msgstr "（启用后，登录地址需追加安全标识参数，如：“?security=flag”）"
 
 msgid "The only sign for backstage landing entry"
-msgstr "后台登陆入口唯一标识"
+msgstr "后台登录入口唯一标识"
 
 msgid "Login security redirect"
-msgstr "登陆失败跳转"
+msgstr "登录失败跳转"
 
 msgid "Jump link after background login verification failed"
-msgstr "后台登陆地址验证失败后的跳转地址"
+msgstr "后台登录地址验证失败后的跳转地址"
 
 #. RSS type
 msgid "File type"

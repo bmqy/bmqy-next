@@ -65,6 +65,7 @@ $baseItem = [
 	'login_security'=>[
 		'type'=> 'switch',
 		'label'=> 'Login Security',
+        'tips'=> '(After being enabled, the login address needs to add security identification parameters, such as: \'?Security = flag\')',
 		'defaultValue'=> 1
 	],
 	'login_security_flag'=>[

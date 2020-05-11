@@ -66,6 +66,22 @@
         }
     </script>
     <?php include_once('template-parts/analytics/index.php') ?>
+
+    <?php
+    //代码高亮
+    if(get_option('bmqynext_options_enable_highlight')==='1'){
+    ?>
+        <script>
+            hljs.initHighlightingOnLoad();
+            <?php
+            // 显示行号
+            if(get_option('bmqynext_options_enable_highlight_number')==='1'){
+            ?>
+                hljs.initLineNumbersOnLoad();
+            <?php } ?>
+        </script>
+    <?php } ?>
+
 	<?php if(get_option('bmqynext_options_custom_style')!==''): ?>
         <style>
             <?php echo get_option('bmqynext_options_custom_style') ?>
