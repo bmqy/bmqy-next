@@ -537,21 +537,19 @@ if(get_option('bmqynext_options_login_security')==='1'){
             }
         }
         //判断访问登录页
-        if(bmqynext_is_get()){
-            $redirectTo = $_GET['redirect_to'];
-            if(empty($_GET['security'])){
-                //判断是否有确认邮件地址等操作
-                if(!strpos($redirectTo, 'wp-admin')){
-                    if($referer && strpos($referer, '/wp-login.php?security='. $loginSecurityFalg)){
-                        header('Location: /wp-login.php?security='. $loginSecurityFalg);
-                    } else {
-                        header('Location: '. $loginSecurityRedirect);
-                    }
-                }
-            }else{
-                if($_GET['security'] != $loginSecurityFalg) {
+        $redirectTo = $_GET['redirect_to'];
+        if(empty($_GET['security'])){
+            //判断是否有确认邮件地址等操作
+            if(!strpos($redirectTo, 'wp-admin')){
+                if($referer && strpos($referer, '/wp-login.php?security='. $loginSecurityFalg)){
+                    header('Location: /wp-login.php?security='. $loginSecurityFalg);
+                } else {
                     header('Location: '. $loginSecurityRedirect);
                 }
+            }
+        }else{
+            if($_GET['security'] != $loginSecurityFalg) {
+                header('Location: '. $loginSecurityRedirect);
             }
         }
 	}
