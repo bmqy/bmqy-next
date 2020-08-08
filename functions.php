@@ -498,6 +498,26 @@ function bmqynext_clear_db_cache_archives_list() {
 }
 add_action('save_post', 'bmqynext_clear_db_cache_archives_list');
 
+/**
+ * 判断是否为post请求
+ */
+if(!function_exists('bmqynext_is_post')){
+    function bmqynext_is_post()
+    {
+        return strtoupper( $_SERVER['REQUEST_METHOD']) === 'POST';
+    }
+}
+
+/**
+ * 判断是否为get请求
+ */
+if(!function_exists('bmqynext_is_get')){
+    function bmqynext_is_get()
+    {
+        return strtoupper( $_SERVER['REQUEST_METHOD']) === 'GET';
+    }
+}
+
 /*
  * 自定义后台登录地址
  * */
@@ -506,11 +526,34 @@ if(get_option('bmqynext_options_login_security')==='1'){
 	function bmqynext_login_security(){
 		$loginSecurityFalg = (get_option('bmqynext_options_login_security_flag')!='')?get_option('bmqynext_options_login_security_flag'):'flag';
 		$loginSecurityRedirect = (get_option('bmqynext_options_login_security_redirect')!='')?get_option('bmqynext_options_login_security_redirect'):site_url();
-		if(empty($_GET['security'])){
-			header('Location: '. $loginSecurityRedirect);
-		}else{
-			if($_GET['security'] != $loginSecurityFalg)header('Location: '. $loginSecurityRedirect);
-		}
+		$referer = $_SERVER['HTTP_REFERER'];
+
+		//判断是否登录请求
+        if(bmqynext_is_post()){
+            if(strpos($referer, '/wp-login.php?security='. $loginSecurityFalg)){
+                if(!is_user_logged_in()){
+                    header('Location: /wp-login.php?security='. $loginSecurityFalg);
+                }
+            }
+        }
+        //判断访问登录页
+        if(bmqynext_is_get()){
+            $redirectTo = $_GET['redirect_to'];
+            if(empty($_GET['security'])){
+                //判断是否有确认邮件地址等操作
+                if(!strpos($redirectTo, 'wp-admin')){
+                    if($referer && strpos($referer, '/wp-login.php?security='. $loginSecurityFalg)){
+                        header('Location: /wp-login.php?security='. $loginSecurityFalg);
+                    } else {
+                        header('Location: '. $loginSecurityRedirect);
+                    }
+                }
+            }else{
+                if($_GET['security'] != $loginSecurityFalg) {
+                    header('Location: '. $loginSecurityRedirect);
+                }
+            }
+        }
 	}
 }
 
