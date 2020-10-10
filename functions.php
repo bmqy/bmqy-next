@@ -193,7 +193,7 @@ function bmqynext_scripts() {
         // Highlight theme script.
         wp_enqueue_script( 'bmqynext-highlight-theme', get_template_directory_uri().'/lib/highlight/highlight.min.js', '', '10.0.1', false );
         if(get_option('bmqynext_options_enable_highlight_number')==='1'){
-            wp_enqueue_script( 'bmqynext-highlight-number', get_template_directory_uri().'/lib/highlight/highlightjs-line-numbers', '', '2.7.0', false );
+            wp_enqueue_script( 'bmqynext-highlight-number', get_template_directory_uri().'/lib/highlight/highlightjs-line-numbers.js', '', '2.7.0', false );
         }
     }
 
