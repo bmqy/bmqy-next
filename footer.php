@@ -27,6 +27,14 @@
             </div>
             <?php endif; ?>
 
+            <?php if(get_option("bmqynext_options_filing")!=""):?>
+            <div class="beian-info">
+                <a class="theme-link" target="_blank" href="https://beian.miit.gov.cn/">
+                    <?php echo get_option('bmqynext_options_filing')?>
+                </a>
+            </div>
+            <?php endif; ?>
+
             <?php if(false):?>
             <div style="display: none;">
                 熊掌号：https://author.baidu.com/home/1545776927809018?from=bmqy
