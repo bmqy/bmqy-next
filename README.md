@@ -16,6 +16,6 @@
 ### 联系作者
 >PS：更多功能，不定期完善中...    
 
-[@chanel](https://t.me/tgbmqy)
+[@chanel](https://t.me/tcbmqy)
 
-[@group](https://t.me/joinchat/FkWz4qftg94RFCb7)
+[@group](https://t.me/tgbmqy)
